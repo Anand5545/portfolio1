@@ -73,8 +73,11 @@
     </nav>
 
    <!-- Hero Section -->
-<section class="pt-28 pb-20 md:pt-40 md:pb-32 px-4 bg-backgroundy font-sans">
-  <div class="container mx-auto max-w-6xl">
+<section id="hero" class="relative overflow-hidden pt-28 pb-20 md:pt-40 md:pb-32 px-4 bg-background font-sans">
+  <!-- Particle Canvas -->
+  <canvas id="hero-particles"></canvas>
+  
+  <div class="container mx-auto max-w-6xl relative z-10">
     <div class="flex flex-col md:flex-row items-center md:items-center gap-16">
 
       <!-- Left Content -->
@@ -82,8 +85,8 @@
         <h1 class="text-4xl md:text-6xl font-bold text-white leading-tight whitespace-nowrap">
           Hi<span class="inline-block animate-wiggle">👋</span>I am <span class="text-red-500">Anand&nbsp;K&nbsp;S</span>
         </h1>
-        <h2 class="text-2xl md:text-3xl font-medium text-gray-300 tracking-wide">
-          Mobile Application Developer <span class="mx-2">|</span> UI/UX Designer
+        <h2 class="text-2xl md:text-3xl font-medium text-gray-300 tracking-wide min-h-[40px]">
+          I am a <span id="typing-text" class="text-red-500 font-semibold"></span><span class="typing-cursor"></span>
         </h2>
         <p class="text-lg md:text-xl text-gray-400 max-w-xl md:pr-4">
           I turn code into creative, user-focused mobile experiences that are both smooth and stunning.
@@ -108,8 +111,12 @@
 
       <!-- Right Side Image -->
       <div class="md:w-1/2 w-full animate-slideInRight flex justify-center md:justify-end relative">
-        <img src="org_image/Portfolio,profilepic.jpeg" alt="Anand K S"
-             class="rounded-2xl shadow-2xl w-full h-[600px] object-cover max-w-md md:max-w-full">
+        <div class="relative group">
+          <!-- Profile image glow behind -->
+          <div class="absolute -inset-1.5 bg-gradient-to-r from-red-500 to-yellow-500 rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-1000 group-hover:duration-200"></div>
+          <img src="org_image/Portfolio,profilepic.jpeg" alt="Anand K S"
+               class="relative rounded-2xl shadow-2xl w-full h-[600px] object-cover max-w-md md:max-w-full">
+        </div>
       </div>
     </div>
   </div>
@@ -236,12 +243,11 @@
     </section>
 
     <!-- Skills Section -->
-  <!-- Skills Section -->
 <section id="skills" class="py-20 px-4">
-  <div class="px-4 py-12 space-y-12">
+  <div class="px-4 py-12 space-y-12 container mx-auto max-w-6xl">
     
     <!-- Main Heading -->
-    <div class="text-center">
+    <div class="text-center reveal">
       <h1 class="text-5xl font-bold">
         My <span class="text-red-500">Skills</span>
       </h1>
@@ -249,88 +255,132 @@
     </div>
 
     <!-- Section 1: Flutter Development -->
-    <section class="text-center">
-      <h2 class="text-3xl font-bold mb-2">Mobile App Development <span class="text-red-500">- Flutter</span></h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-4">
+    <section class="text-center reveal">
+      <h2 class="text-3xl font-bold mb-6">Mobile App Development <span class="text-red-500">- Flutter</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
         
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">Flutter</h3>
-          <p class="text-sm text-gray-400 mb-2">Expert</p>
-          <p>Cross-platform app development</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">Flutter</h3>
+            <p class="text-sm text-gray-400 mb-3">Expert</p>
+            <p class="text-textSecondary text-sm">Cross-platform app development</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="95%"></div>
+          </div>
         </div>
 
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">State Management</h3>
-          <p class="text-sm text-gray-400 mb-2">Advanced</p>
-          <p>Provider, GetX</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">State Management</h3>
+            <p class="text-sm text-gray-400 mb-3">Advanced</p>
+            <p class="text-textSecondary text-sm">Provider, GetX</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="90%"></div>
+          </div>
         </div>
 
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">Firebase</h3>
-          <p class="text-sm text-gray-400 mb-2">Intermediate</p>
-          <p>Auth, Firestore, Push Notifications</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">Firebase</h3>
+            <p class="text-sm text-gray-400 mb-3">Intermediate</p>
+            <p class="text-textSecondary text-sm">Auth, Firestore, Push Notifications</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="80%"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Section 2: Web Design -->
-    <section class="text-center">
-      <h2 class="text-3xl font-bold mb-2">Web Designing <span class="text-red-500">- HTML, CSS, JS</span></h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto mt-4">
+    <section class="text-center reveal">
+      <h2 class="text-3xl font-bold mb-6">Web Designing <span class="text-red-500">- HTML, CSS, JS</span></h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-4">
         
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">HTML</h3>
-          <p class="text-sm text-gray-400 mb-2">Expert</p>
-          <p>Semantic markup & accessibility</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">HTML</h3>
+            <p class="text-sm text-gray-400 mb-3">Expert</p>
+            <p class="text-textSecondary text-sm">Semantic markup & accessibility</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="92%"></div>
+          </div>
         </div>
 
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">CSS</h3>
-          <p class="text-sm text-gray-400 mb-2">Advanced</p>
-          <p>Responsive layouts, Flexbox, Grid</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">CSS</h3>
+            <p class="text-sm text-gray-400 mb-3">Advanced</p>
+            <p class="text-textSecondary text-sm">Responsive layouts, Flexbox, Grid</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="88%"></div>
+          </div>
         </div>
 
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">JavaScript</h3>
-          <p class="text-sm text-gray-400 mb-2">Intermediate</p>
-          <p>DOM, Events, Interactivity</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">JavaScript</h3>
+            <p class="text-sm text-gray-400 mb-3">Intermediate</p>
+            <p class="text-textSecondary text-sm">DOM, Events, Interactivity</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="78%"></div>
+          </div>
         </div>
       </div>
     </section>
 
     <!-- Section 3: UI/UX Design -->
-    <section class="text-center">
-      <h2 class="text-3xl font-bold mb-2">UI/UX Design <span class="text-red-500">- Canva, Figma</span></h2>
+    <section class="text-center reveal">
+      <h2 class="text-3xl font-bold mb-6">UI/UX Design <span class="text-red-500">- Canva, Figma</span></h2>
       <div class="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto mt-4">
         
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">Figma</h3>
-          <p class="text-sm text-gray-400 mb-2">Advanced</p>
-          <p>Prototyping & UI Systems</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">Figma</h3>
+            <p class="text-sm text-gray-400 mb-3">Advanced</p>
+            <p class="text-textSecondary text-sm">Prototyping & UI Systems</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="88%"></div>
+          </div>
         </div>
 
-        <div class="bg-white/5 border border-red-600 p-4 rounded-xl shadow-lg hover:shadow-red-500/50 transition">
-          <h3 class="text-xl font-semibold text-red-500 mb-1">Canva</h3>
-          <p class="text-sm text-gray-400 mb-2">Expert</p>
-          <p>Graphics & branding</p>
+        <div class="card-glow bg-white/5 border border-red-600/40 p-6 rounded-xl shadow-lg hover:shadow-red-500/20 transition duration-300 flex flex-col justify-between">
+          <div>
+            <h3 class="text-xl font-semibold text-red-500 mb-1">Canva</h3>
+            <p class="text-sm text-gray-400 mb-3">Expert</p>
+            <p class="text-textSecondary text-sm">Graphics & branding</p>
+          </div>
+          <div class="skill-progress-bg">
+            <div class="skill-progress-fill" data-progress="92%"></div>
+          </div>
         </div>
       </div>
     </section>
 
   </div>
 </section>
-
-
-
-    <!-- Projects Section -->
+    <!-- Projects Section -->
     <section id="projects" class="py-20 px-4 bg-black/30">
         <div class="container mx-auto max-w-6xl">
             <h2 class="text-3xl md:text-4xl font-bold mb-12 text-center reveal">
                 Featured <span class="text-accent">Projects</span>
             </h2>
+
+            <!-- Category Filters -->
+            <div class="flex justify-center flex-wrap gap-4 mb-12 reveal">
+                <button class="filter-btn active px-6 py-2 rounded-full border border-accent text-white bg-accent/15 transition-all text-sm font-semibold tracking-wide" data-filter="all">All Projects</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-800 text-textSecondary hover:text-white hover:border-accent/50 transition-all text-sm font-semibold tracking-wide" data-filter="mobile">Flutter Apps</button>
+                <button class="filter-btn px-6 py-2 rounded-full border border-gray-800 text-textSecondary hover:text-white hover:border-accent/50 transition-all text-sm font-semibold tracking-wide" data-filter="integration">Integration & Python</button>
+            </div>
             
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right">
+                <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right" data-category="mobile">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
         <img src="org_image/mixalore-bg screen.png" alt="Mixalore App Screenshot"
              class="w-full h-full object-cover object-center" />
@@ -379,7 +429,7 @@
         </div>
     </div>
 </div>
-              <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+              <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="mobile">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
         <img src="org_image/proptelli img.png" alt="PropTelli App Screenshot"
              class="w-full h-full object-cover object-center" />
@@ -425,8 +475,8 @@
     </div>
 </div>
                <!-- Project 0.1 -->
-                <!-- Project - My Land Bank Agent -->
-<div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+                 <!-- Project - My Land Bank Agent -->
+<div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="mobile">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
         <img src="org_image/my landbank2.png" alt="My Land Bank Agent App Screenshot"
              class="w-full h-full object-cover object-center" />
@@ -453,7 +503,7 @@
         </a>
     </div>
 </div>
-<div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+<div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="mobile">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
         <img src="org_image/50.png" alt="ChoosenFly App Screenshot"
              class="w-full h-full object-cover object-center" />
@@ -481,10 +531,8 @@
     </div>
 </div>
 
-
-
                <!-- Project 0.2 -->
-              <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+              <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="mobile">
                 <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
                     <img src="org_image/choose my fresh 2.png" alt="Choose My Fresh App Screenshot"
                         class="w-full h-full object-cover object-top" />
@@ -514,7 +562,7 @@
             </div>
               
                 <!-- Project 1 -->
-                <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+                <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="mobile">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
   <img src="org_image/consumer.jpg" alt="SLR Shoppee Logo"
        class="w-full h-full object-cover object-top" />
@@ -539,7 +587,7 @@
     </div>
 </div> 
                 <!-- Project 2 -->
-                <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right">
+                <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right" data-category="mobile">
                     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
   <img src="org_image/SLR SHOPPEE.png" alt="SLR Shoppee Logo"
        class="w-full h-full object-cover object-top" />
@@ -566,7 +614,7 @@
                 </div>
 <!-- Project 3 -->
 
-                 <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 animate-fadeInUp delay-100">
+                 <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 animate-fadeInUp delay-100" data-category="mobile">
                  <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
   <img src="org_image/shop.png" alt="SLR Shoppee Logo"
        class="w-full h-full object-cover object-top" />
@@ -610,7 +658,7 @@
             <!-- Hidden Projects (Initially Hidden) -->
             <div id="more-projects" class="hidden mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <!-- Project 6 -->
-                <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 animate-fadeInUp">
+                <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 animate-fadeInUp" data-category="mobile">
                     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
   <img src="org_image/digibank.png" alt="SLR Shoppee Logo"
        class="w-full h-full object-cover object-top" />
@@ -631,7 +679,7 @@
                 </div>
                 
                 <!-- Project 6 -->
-                <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right">
+                <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-right" data-category="integration">
                     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
   <img src="org_image/recipe.png" alt="SLR Shoppee Logo"
        class="w-full h-full object-cover object-top" />
@@ -651,7 +699,7 @@
                        
                     </div>
                 </div>
-                    <div class="project-card bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left">
+                    <div class="project-card card-glow bg-background rounded-xl overflow-hidden border border-gray-800 reveal-left" data-category="integration">
     <div class="h-48 bg-gradient-to-r from-accent to-accentSecondary overflow-hidden">
         <img src="org_image/bus tracking.png" alt="Bus Tracking App Screenshot"
              class="w-full h-full object-cover object-top" />
@@ -1039,70 +1087,261 @@
 </footer>
 
 <script>
-   document.addEventListener('DOMContentLoaded', function() {
-    let lastScrollPosition = 0;
-    const scrollThreshold = 70;
-    const logo = document.getElementById('logo');
+    document.addEventListener('DOMContentLoaded', function() {
+        // --- 1. Custom Toast Notification ---
+        function showToast(message, type) {
+            const toast = document.createElement('div');
+            toast.className = `fixed bottom-5 right-5 z-50 px-6 py-3 rounded-lg text-white font-medium shadow-2xl transform translate-y-10 opacity-0 transition-all duration-300 ${
+                type === 'success' ? 'bg-green-600' : 'bg-red-600'
+            }`;
+            toast.textContent = message;
+            document.body.appendChild(toast);
+            
+            setTimeout(() => {
+                toast.classList.remove('translate-y-10', 'opacity-0');
+            }, 10);
 
-    window.addEventListener('scroll', function() {
-      const currentScrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-      
-      if (currentScrollPosition <= 0) {
-        logo.style.opacity = '0';
-        return;
-      }
-      
-      if (currentScrollPosition > lastScrollPosition && currentScrollPosition > scrollThreshold) {
-        logo.style.opacity = '1';
-      } 
-      else if (currentScrollPosition < lastScrollPosition) {
-        logo.style.opacity = '0';
-      }
-      
-      lastScrollPosition = currentScrollPosition;
-    });
-  });
-</script>
-<style>
-  #logo {
-    /* position: fixed; */
-    /* top: 20px;
-    left: 20px; */
-    /* background: black; */
-    color: white; /* Changed for better contrast */
-    padding: 10px 20px;
-    border-radius: 8px;
-    font-weight: bold;
-    z-index: 1000;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-    pointer-events: none;
-  }
-  
-  #logo .highlight {
-    color: #f44336;
-  }
-  
-</style>
-    <script>
-        // Mobile Menu Toggle
+            setTimeout(() => {
+                toast.classList.add('translate-y-10', 'opacity-0');
+                setTimeout(() => toast.remove(), 300);
+            }, 4000);
+        }
+
+        // --- 2. Navbar Scroll Transitions & Logo UX Fix ---
+        const navbar = document.querySelector('nav');
+        const logo = document.getElementById('logo');
+        
+        if (logo) {
+            logo.style.opacity = '1';
+            logo.style.pointerEvents = 'auto';
+            logo.style.cursor = 'pointer';
+            logo.style.transition = 'all 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
+            logo.style.transform = 'scale(1)';
+            
+            logo.addEventListener('click', () => {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+        }
+        
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            if (scrollTop > 50) {
+                navbar.classList.add('py-2', 'shadow-2xl', 'bg-background/95');
+                navbar.classList.remove('py-4', 'bg-background/90');
+                if (logo) logo.style.transform = 'scale(0.95)';
+            } else {
+                navbar.classList.remove('py-2', 'shadow-2xl', 'bg-background/95');
+                navbar.classList.add('py-4', 'bg-background/90');
+                if (logo) logo.style.transform = 'scale(1)';
+            }
+        });
+
+        // --- 3. Dynamic Typing Effect ---
+        const typingTextSpan = document.getElementById('typing-text');
+        const phrases = ['Flutter Developer', 'Mobile Application Developer', 'UI/UX Designer'];
+        let phraseIdx = 0;
+        let charIdx = 0;
+        let isDeleting = false;
+        let typingSpeed = 100;
+
+        function typeEffect() {
+            if (!typingTextSpan) return;
+            const currentPhrase = phrases[phraseIdx];
+            
+            if (isDeleting) {
+                typingTextSpan.textContent = currentPhrase.substring(0, charIdx - 1);
+                charIdx--;
+                typingSpeed = 40;
+            } else {
+                typingTextSpan.textContent = currentPhrase.substring(0, charIdx + 1);
+                charIdx++;
+                typingSpeed = 80;
+            }
+
+            if (!isDeleting && charIdx === currentPhrase.length) {
+                isDeleting = true;
+                typingSpeed = 2000; // Hold text
+            } else if (isDeleting && charIdx === 0) {
+                isDeleting = false;
+                phraseIdx = (phraseIdx + 1) % phrases.length;
+                typingSpeed = 400; // Hold empty
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+        if (typingTextSpan) {
+            setTimeout(typeEffect, 800);
+        }
+
+        // --- 4. Interactive Particles Background ---
+        const canvas = document.getElementById('hero-particles');
+        if (canvas) {
+            const ctx = canvas.getContext('2d');
+            let width = canvas.width = canvas.offsetWidth;
+            let height = canvas.height = canvas.offsetHeight;
+
+            const particles = [];
+            const particleCount = 45;
+            const connectionDistance = 110;
+            let mouse = { x: null, y: null };
+
+            class Particle {
+                constructor() {
+                    this.x = Math.random() * width;
+                    this.y = Math.random() * height;
+                    this.vx = (Math.random() - 0.5) * 0.5;
+                    this.vy = (Math.random() - 0.5) * 0.5;
+                    this.radius = Math.random() * 2 + 1;
+                }
+
+                update() {
+                    this.x += this.vx;
+                    this.y += this.vy;
+
+                    if (this.x < 0 || this.x > width) this.vx *= -1;
+                    if (this.y < 0 || this.y > height) this.vy *= -1;
+                }
+
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                    ctx.fillStyle = 'rgba(255, 60, 56, 0.35)';
+                    ctx.fill();
+                }
+            }
+
+            function initParticles() {
+                particles.length = 0;
+                for (let i = 0; i < particleCount; i++) {
+                    particles.push(new Particle());
+                }
+            }
+
+            function animateParticles() {
+                ctx.clearRect(0, 0, width, height);
+
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dist = Math.hypot(particles[i].x - particles[j].x, particles[i].y - particles[j].y);
+                        if (dist < connectionDistance) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.strokeStyle = `rgba(255, 60, 56, ${0.15 * (1 - dist / connectionDistance)})`;
+                            ctx.lineWidth = 0.8;
+                            ctx.stroke();
+                        }
+                    }
+
+                    if (mouse.x !== null && mouse.y !== null) {
+                        const distToMouse = Math.hypot(particles[i].x - mouse.x, particles[i].y - mouse.y);
+                        if (distToMouse < connectionDistance * 1.5) {
+                            ctx.beginPath();
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(mouse.x, mouse.y);
+                            ctx.strokeStyle = `rgba(245, 166, 35, ${0.15 * (1 - distToMouse / (connectionDistance * 1.5))})`;
+                            ctx.lineWidth = 1.0;
+                            ctx.stroke();
+                        }
+                    }
+                }
+
+                requestAnimationFrame(animateParticles);
+            }
+
+            window.addEventListener('resize', () => {
+                width = canvas.width = canvas.offsetWidth;
+                height = canvas.height = canvas.offsetHeight;
+                initParticles();
+            });
+
+            const heroSec = document.getElementById('hero');
+            if (heroSec) {
+                heroSec.addEventListener('mousemove', e => {
+                    const rect = heroSec.getBoundingClientRect();
+                    mouse.x = e.clientX - rect.left;
+                    mouse.y = e.clientY - rect.top;
+                });
+
+                heroSec.addEventListener('mouseleave', () => {
+                    mouse.x = null;
+                    mouse.y = null;
+                });
+            }
+
+            initParticles();
+            animateParticles();
+        }
+
+        // --- 5. Interactive Glow Card Pointer Event Mapping ---
+        document.querySelectorAll('.card-glow').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+
+        // --- 6. Mobile Menu Toggle ---
         const mobileMenuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
         
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
+        if (mobileMenuButton && mobileMenu) {
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+            });
+        }
         
-        // Show More Projects
+        // --- 7. Show More Projects Button Toggle ---
         const showMoreButton = document.getElementById('show-more-projects');
         const moreProjects = document.getElementById('more-projects');
         
-        showMoreButton.addEventListener('click', () => {
-            moreProjects.classList.toggle('hidden');
-            showMoreButton.textContent = moreProjects.classList.contains('hidden') ? 'Show More Projects' : 'Show Less';
+        if (showMoreButton && moreProjects) {
+            showMoreButton.addEventListener('click', () => {
+                moreProjects.classList.toggle('hidden');
+                showMoreButton.textContent = moreProjects.classList.contains('hidden') ? 'Show More Projects' : 'Show Less';
+            });
+        }
+
+        // --- 8. Project Filter System ---
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        const projectCards = document.querySelectorAll('#projects .project-card');
+
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                filterBtns.forEach(b => {
+                    b.classList.remove('active', 'border-accent', 'bg-accent/15', 'text-white');
+                    b.classList.add('border-gray-800', 'text-textSecondary');
+                });
+                btn.classList.add('active', 'border-accent', 'bg-accent/15', 'text-white');
+                btn.classList.remove('border-gray-800', 'text-textSecondary');
+
+                const filter = btn.getAttribute('data-filter');
+
+                projectCards.forEach(card => {
+                    const category = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || category === filter) {
+                        card.classList.remove('hidden-card');
+                        setTimeout(() => {
+                            card.style.opacity = '1';
+                            card.style.transform = 'scale(1) translateY(0)';
+                        }, 50);
+                    } else {
+                        card.classList.add('hidden-card');
+                    }
+                });
+            });
         });
         
-        // Smooth Scrolling
+        // --- 9. Smooth Anchor Scrolling ---
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
@@ -1116,73 +1355,80 @@
                         behavior: 'smooth'
                     });
                     
-                    // Close mobile menu if open
-                    if (!mobileMenu.classList.contains('hidden')) {
+                    if (mobileMenu && !mobileMenu.classList.contains('hidden')) {
                         mobileMenu.classList.add('hidden');
                     }
                 }
             });
         });
         
-        // Contact Form Submission (Formspree)
+        // --- 10. Contact Form Submission Handling ---
         const contactForm = document.getElementById('contact-form');
         const formStatus = document.getElementById('form-status');
 
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            formStatus.textContent = 'Sending...';
-            formStatus.classList.remove('text-red-500');
-            formStatus.classList.add('text-accent');
+        if (contactForm && formStatus) {
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                formStatus.textContent = 'Sending...';
+                formStatus.classList.remove('text-red-500');
+                formStatus.classList.add('text-accent');
 
-            const formData = new FormData(contactForm);
+                const formData = new FormData(contactForm);
 
-            try {
-                const response = await fetch(contactForm.action, {
-                    method: contactForm.method,
-                    headers: { 'Accept': 'application/json' },
-                    body: formData
-                });
+                try {
+                    const response = await fetch(contactForm.action, {
+                        method: contactForm.method,
+                        headers: { 'Accept': 'application/json' },
+                        body: formData
+                    });
 
-                if (response.ok) {
-                    contactForm.reset();
-                    formStatus.textContent = 'Thanks! Your message is on its way.';
-                    formStatus.classList.remove('text-red-500');
-                    formStatus.classList.add('text-green-400');
-                } else {
-                    const data = await response.json();
-                    const errorMessage = data.errors?.map(err => err.message).join(', ') || 'Something went wrong.';
-                    throw new Error(errorMessage);
+                    if (response.ok) {
+                        contactForm.reset();
+                        formStatus.textContent = 'Thanks! Your message is on its way.';
+                        formStatus.classList.remove('text-red-500');
+                        formStatus.classList.add('text-green-400');
+                        showToast('Thanks! Your message has been sent successfully.', 'success');
+                    } else {
+                        const data = await response.json();
+                        const errorMessage = data.errors?.map(err => err.message).join(', ') || 'Something went wrong.';
+                        throw new Error(errorMessage);
+                    }
+                } catch (error) {
+                    formStatus.textContent = error.message || 'Unable to send message. Please try again later.';
+                    formStatus.classList.remove('text-green-400');
+                    formStatus.classList.add('text-red-500');
+                    showToast(error.message || 'Error sending message. Please try again.', 'error');
                 }
-            } catch (error) {
-                formStatus.textContent = error.message || 'Unable to send message. Please try again later.';
-                formStatus.classList.remove('text-green-400');
-                formStatus.classList.add('text-red-500');
-            }
-        });
-        
-        // Scroll Animation
-        function revealOnScroll() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
-            
-            for (let i = 0; i < reveals.length; i++) {
-                const windowHeight = window.innerHeight;
-                const elementTop = reveals[i].getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible) {
-                    reveals[i].classList.add('active');
-                } else {
-                    reveals[i].classList.remove('active');
-                }
-            }
+            });
         }
         
-        window.addEventListener('scroll', revealOnScroll);
-        
-        // Trigger on page load
-        window.addEventListener('load', () => {
-            revealOnScroll();
-        });
-    </script>
+        // --- 11. Intersection Observer for Scroll Reveals & Skill Progress Filling ---
+        const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right');
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                    
+                    // Fill progress bars inside this element
+                    const progressFills = entry.target.querySelectorAll('.skill-progress-fill');
+                    progressFills.forEach(fill => {
+                        const progress = fill.getAttribute('data-progress');
+                        fill.style.width = progress;
+                    });
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        reveals.forEach(el => revealObserver.observe(el));
+    });
+</script>
 <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'953c76fbc2e66122',t:'MTc1MDYwMjg0OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
