@@ -911,7 +911,7 @@
     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none z-0">
     </div>
     <div
-      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accentSecondary/5 rounded-full blur-[120px] pointer-events-none z-0">
+      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none z-0">
     </div>
 
     <style>
@@ -926,15 +926,15 @@
 
       @keyframes station-pulse {
         0% {
-          box-shadow: 0 0 0 0 rgba(255, 60, 56, 0.6);
+          box-shadow: 0 0 0 0 rgba(255, 60, 56, 0.6), 0 0 0 0 rgba(255, 60, 56, 0.3);
         }
 
-        70% {
-          box-shadow: 0 0 0 10px rgba(255, 60, 56, 0);
+        50% {
+          box-shadow: 0 0 0 10px rgba(255, 60, 56, 0), 0 0 0 6px rgba(255, 60, 56, 0.15);
         }
 
         100% {
-          box-shadow: 0 0 0 0 rgba(255, 60, 56, 0);
+          box-shadow: 0 0 0 0 rgba(255, 60, 56, 0), 0 0 0 0 rgba(255, 60, 56, 0);
         }
       }
 
@@ -942,22 +942,63 @@
         animation: station-pulse 2s infinite;
       }
 
-      @keyframes active-pulse-secondary {
+      /* Rotating high-tech target reticle around active timeline stops */
+      @keyframes tech-rotate {
         0% {
-          box-shadow: 0 0 0 0 rgba(245, 166, 35, 0.6);
+          transform: rotate(0deg);
         }
-
-        70% {
-          box-shadow: 0 0 0 10px rgba(245, 166, 35, 0);
-        }
-
         100% {
-          box-shadow: 0 0 0 0 rgba(245, 166, 35, 0);
+          transform: rotate(360deg);
         }
       }
 
-      .active-pulse-secondary {
-        animation: active-pulse-secondary 2s infinite;
+      .active-pulse::after {
+        content: '';
+        position: absolute;
+        width: 38px;
+        height: 38px;
+        border: 1px dashed rgba(255, 60, 56, 0.85);
+        border-radius: 50%;
+        animation: tech-rotate 6s linear infinite;
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        margin-top: -19px;
+        margin-left: -19px;
+        box-sizing: border-box;
+      }
+
+      .active-pulse::before {
+        content: '';
+        position: absolute;
+        width: 46px;
+        height: 46px;
+        border: 1.5px dotted rgba(255, 60, 56, 0.4);
+        border-radius: 50%;
+        animation: tech-rotate 12s linear infinite reverse;
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        margin-top: -23px;
+        margin-left: -23px;
+        box-sizing: border-box;
+      }
+
+      /* Hover state target ring (non-active nodes) */
+      .station-outer-ring:not(.active-pulse):hover::after {
+        content: '';
+        position: absolute;
+        width: 34px;
+        height: 34px;
+        border: 1px dashed rgba(255, 60, 56, 0.5);
+        border-radius: 50%;
+        animation: tech-rotate 4s linear infinite;
+        pointer-events: none;
+        top: 50%;
+        left: 50%;
+        margin-top: -17px;
+        margin-left: -17px;
+        box-sizing: border-box;
       }
 
       /* Grid background inside console */
@@ -971,6 +1012,147 @@
       .console-transition {
         transition: opacity 0.3s ease, transform 0.3s ease;
       }
+
+      /* High-tech scanner sweep animation */
+      @keyframes scanner-sweep {
+        0% {
+          top: 0%;
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          top: 100%;
+          opacity: 0;
+        }
+      }
+
+      .scanner-active {
+        animation: scanner-sweep 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Staggered Deliverables Slide-In */
+      @keyframes slide-in-left-stagger {
+        from {
+          opacity: 0;
+          transform: translateX(-15px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .animate-bullet {
+        opacity: 0;
+        animation: slide-in-left-stagger 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      /* Staggered Skills Pop-In */
+      @keyframes pop-in-stagger {
+        from {
+          opacity: 0;
+          transform: scale(0.85);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      .animate-skill-tag {
+        opacity: 0;
+        animation: pop-in-stagger 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+
+      /* Smooth custom progress transition */
+      .progress-transition {
+        transition: width 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+
+      /* Traveling laser head pulsing glow */
+      @keyframes laser-glow {
+        0%, 100% {
+          transform: translate(50%, -50%) scale(1);
+          box-shadow: 0 0 10px #FF3C38, 0 0 20px #FF3C38, 0 0 30px rgba(255, 60, 56, 0.5);
+        }
+        50% {
+          transform: translate(50%, -50%) scale(1.3);
+          box-shadow: 0 0 15px #FF3C38, 0 0 30px #FF3C38, 0 0 45px #FF3C38, 0 0 60px rgba(255, 60, 56, 0.8);
+        }
+      }
+
+      .animate-laser-glow {
+        animation: laser-glow 1.5s ease-in-out infinite;
+      }
+
+      /* Traveling light pulse effect */
+      @keyframes progress-flow {
+        0% {
+          transform: translateX(-100%);
+        }
+        100% {
+          transform: translateX(100%);
+        }
+      }
+
+      .progress-flow-runner {
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(90deg, transparent, rgba(255, 60, 56, 0.8), rgba(255, 255, 255, 0.95), rgba(255, 60, 56, 0.8), transparent);
+        animation: progress-flow 2s infinite linear;
+      }
+
+      /* Holographic settled flicker animation */
+      @keyframes glitch-flicker {
+        0%, 100% {
+          opacity: 1;
+          filter: brightness(1) contrast(1) blur(0px);
+        }
+        15% {
+          opacity: 0.75;
+          filter: brightness(1.2) contrast(1.15) blur(0.5px);
+        }
+        30% {
+          opacity: 0.95;
+          filter: brightness(0.9) contrast(0.9);
+        }
+        45% {
+          opacity: 0.8;
+          filter: brightness(1.1) contrast(1.1) blur(0.2px);
+        }
+        60% {
+          opacity: 0.9;
+        }
+        75% {
+          opacity: 0.85;
+          filter: brightness(1.05) contrast(1.05);
+        }
+      }
+
+      .animate-flicker {
+        animation: glitch-flicker 0.28s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+      }
+
+      /* Signal Link Visualizer Bouncing Waves */
+      @keyframes wave-bounce {
+        0%, 100% {
+          height: 3px;
+        }
+        50% {
+          height: 12px;
+        }
+      }
+
+      .animate-wave-bar-1 { animation: wave-bounce 0.8s ease-in-out infinite; }
+      .animate-wave-bar-2 { animation: wave-bounce 1.1s ease-in-out infinite 0.1s; }
+      .animate-wave-bar-3 { animation: wave-bounce 0.9s ease-in-out infinite 0.2s; }
+      .animate-wave-bar-4 { animation: wave-bounce 1.3s ease-in-out infinite 0.15s; }
+      .animate-wave-bar-5 { animation: wave-bounce 0.7s ease-in-out infinite 0.3s; }
     </style>
 
     <div class="container mx-auto max-w-6xl relative z-10">
@@ -1002,8 +1184,15 @@
 
             <!-- Road Track Progress Line (Red/Orange Gradient) -->
             <div id="roadmap-progress-line"
-              class="absolute top-1/2 left-[5%] h-[3px] bg-gradient-to-r from-accent to-accentSecondary -translate-y-1/2 z-10 rounded-full transition-all duration-700 ease-out shadow-[0_0_10px_rgba(255,60,56,0.5)]"
-              style="width: 0%;"></div>
+              class="absolute top-1/2 left-[5%] h-[3px] bg-gradient-to-r from-accent to-accent/50 -translate-y-1/2 z-10 rounded-full progress-transition shadow-[0_0_10px_rgba(255, 60, 56, 0.5)] relative"
+              style="width: 0%;">
+              <!-- Flow Pulse Container (clipped) -->
+              <div class="absolute inset-0 overflow-hidden rounded-full pointer-events-none">
+                <div class="absolute inset-0 progress-flow-runner"></div>
+              </div>
+              <!-- Traveling Laser Head (unclipped) -->
+              <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border border-accent shadow-[0_0_12px_#FF3C38,0_0_24px_#FF3C38] translate-x-1/2 z-20 animate-laser-glow pointer-events-none"></div>
+            </div>
 
             <!-- Stop 01: MixA'lore -->
             <div
@@ -1012,7 +1201,7 @@
               <span
                 class="text-[10px] font-mono text-white/40 mb-3 transition-colors duration-300 group-hover:text-accent font-bold">2025-26</span>
               <div
-                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring">
+                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring relative">
                 <div class="w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 station-inner-dot"></div>
               </div>
               <span
@@ -1026,7 +1215,7 @@
               <span
                 class="text-[10px] font-mono text-white/40 mb-3 transition-colors duration-300 group-hover:text-accent font-bold">2025</span>
               <div
-                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring">
+                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring relative">
                 <div class="w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 station-inner-dot"></div>
               </div>
               <span
@@ -1040,7 +1229,7 @@
               <span
                 class="text-[10px] font-mono text-white/40 mb-3 transition-colors duration-300 group-hover:text-accent font-bold">2025</span>
               <div
-                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring">
+                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring relative">
                 <div class="w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 station-inner-dot"></div>
               </div>
               <span
@@ -1054,11 +1243,12 @@
               <span
                 class="text-[10px] font-mono text-white/40 mb-3 transition-colors duration-300 group-hover:text-accent font-bold">2024</span>
               <div
-                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring">
+                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring relative">
                 <div class="w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 station-inner-dot"></div>
               </div>
               <span
-                class="text-xs font-bold font-heading text-white/50 mt-3 text-center truncate w-24 transition-colors duration-300 group-hover:text-white">SLR Shoppee</span>
+                class="text-xs font-bold font-heading text-white/50 mt-3 text-center truncate w-24 transition-colors duration-300 group-hover:text-white">SLR
+                Shoppee</span>
             </div>
 
             <!-- Stop 05: Luminar -->
@@ -1068,7 +1258,7 @@
               <span
                 class="text-[10px] font-mono text-white/40 mb-3 transition-colors duration-300 group-hover:text-accent font-bold">2023</span>
               <div
-                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring">
+                class="w-7 h-7 rounded-full bg-[#0d0d0d] border-2 border-white/20 flex items-center justify-center transition-all duration-300 group-hover:border-accent group-hover:scale-110 station-outer-ring relative">
                 <div class="w-2.5 h-2.5 rounded-full bg-white/20 transition-all duration-300 station-inner-dot"></div>
               </div>
               <span
@@ -1082,9 +1272,11 @@
       <!-- SHOWCASE DETAILS CONSOLE (Holographic dashboard layout) -->
       <div
         class="relative bg-black/40 border border-white/5 rounded-2xl p-6 sm:p-10 shadow-2xl backdrop-blur-md overflow-hidden console-grid-bg">
+        <!-- Laser scanner line -->
+        <div id="console-scanner" class="absolute left-0 right-0 h-[2px] bg-accent/60 shadow-[0_0_8px_rgba(255,60,56,0.6)] pointer-events-none z-20 opacity-0"></div>
         <!-- Accent line decor -->
         <div
-          class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accentSecondary to-transparent">
+          class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/50 to-transparent">
         </div>
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/5 rounded-full blur-3xl"></div>
 
@@ -1146,6 +1338,24 @@
                 <span id="console-date">11/2023 - 04/2024</span>
               </div>
             </div>
+
+            <!-- Signal Visualizer & Terminal Logger -->
+            <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between font-mono text-[9px] tracking-wider text-white/30 select-none">
+              <div class="flex items-center gap-1.5">
+                <span class="flex h-1.5 w-1.5 relative">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent"></span>
+                </span>
+                <span id="console-status-log">SYS_STATUS // LINK_SECURE</span>
+              </div>
+              <div class="flex items-end gap-0.5 h-3">
+                <div class="w-0.5 bg-accent/60 animate-wave-bar-1 rounded-sm"></div>
+                <div class="w-0.5 bg-accent/80 animate-wave-bar-2 rounded-sm"></div>
+                <div class="w-0.5 bg-accent animate-wave-bar-3 rounded-sm"></div>
+                <div class="w-0.5 bg-accent/80 animate-wave-bar-4 rounded-sm"></div>
+                <div class="w-0.5 bg-accent/60 animate-wave-bar-5 rounded-sm"></div>
+              </div>
+            </div>
           </div>
 
           <!-- Right Console: Bullet Points & Tech Deployments -->
@@ -1171,44 +1381,54 @@
       <!-- Separate Goals Section -->
       <div class="mt-20 pt-12 border-t border-white/5 relative z-10">
         <div class="text-center mb-12 reveal">
-          <p class="text-accentSecondary text-xs font-mono tracking-[0.25em] uppercase mb-3">// STRATEGIC GOALS & VISION</p>
+          <p class="text-accent text-xs font-mono tracking-[0.25em] uppercase mb-3">// STRATEGIC GOALS & VISION
+          </p>
           <h2 class="text-3xl md:text-4xl font-bold font-heading text-white">
-            Future <span class="text-accentSecondary">Directives</span>
+            Future <span class="text-accent">Directives</span>
           </h2>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
           <!-- Short-term Goal Card -->
-          <div class="glass-card card-glow p-8 relative reveal-left border border-gray-800 bg-[#121212] rounded-2xl flex flex-col justify-between overflow-hidden console-grid-bg">
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accentSecondary to-transparent"></div>
+          <div
+            class="glass-card card-glow p-8 relative reveal-left border border-gray-800 bg-[#121212] rounded-2xl flex flex-col justify-between overflow-hidden console-grid-bg">
+            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-transparent">
+            </div>
             <div class="space-y-4">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 bg-accentSecondary/10 border border-accentSecondary/20 text-accentSecondary text-[10px] font-mono uppercase tracking-wider rounded font-semibold">Immediate Horizon</span>
+                <span
+                  class="px-2.5 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono uppercase tracking-wider rounded font-semibold">Immediate
+                  Horizon</span>
                 <span class="text-xs font-mono text-white/40">1 - 2 Years</span>
               </div>
               <h3 class="text-2xl font-bold text-white font-heading">Flutter & Mobile Specialist</h3>
-              <p class="text-accentSecondary font-medium text-sm">Short-term Career Goals</p>
-              
+              <p class="text-accent font-medium text-sm">Short-term Career Goals</p>
+
               <ul class="space-y-3 text-sm text-white/70 list-none pl-0 pt-2">
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
-                  <span>Build modern, intuitive Flutter applications in collaborative, growth-driven environments.</span>
+                  <span>Build modern, intuitive Flutter applications in collaborative, growth-driven
+                    environments.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
-                  <span>Deepen backend integration expertise, cloud capabilities, and advanced UI animation techniques.</span>
+                  <span>Deepen backend integration expertise, cloud capabilities, and advanced UI animation
+                    techniques.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
@@ -1216,64 +1436,89 @@
                 </li>
               </ul>
             </div>
-            
+
             <div class="pt-6 mt-6 border-t border-white/5">
               <div class="flex flex-wrap gap-2">
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Flutter</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Backend Cloud</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Advanced UI</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Agile Teams</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">DevOps</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Flutter</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Backend
+                  Cloud</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Advanced
+                  UI</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Agile
+                  Teams</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">DevOps</span>
               </div>
             </div>
           </div>
 
           <!-- Long-term Goal Card -->
-          <div class="glass-card card-glow p-8 relative reveal-right border border-gray-800 bg-[#121212] rounded-2xl flex flex-col justify-between overflow-hidden console-grid-bg">
-            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accentSecondary to-transparent"></div>
+          <div
+            class="glass-card card-glow p-8 relative reveal-right border border-gray-800 bg-[#121212] rounded-2xl flex flex-col justify-between overflow-hidden console-grid-bg">
+            <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent to-transparent">
+            </div>
             <div class="space-y-4">
               <div class="flex items-center justify-between">
-                <span class="px-2.5 py-1 bg-accentSecondary/10 border border-accentSecondary/20 text-accentSecondary text-[10px] font-mono uppercase tracking-wider rounded font-semibold">Long-term Horizon</span>
+                <span
+                  class="px-2.5 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono uppercase tracking-wider rounded font-semibold">Long-term
+                  Horizon</span>
                 <span class="text-xs font-mono text-white/40">3 - 5 Years</span>
               </div>
               <h3 class="text-2xl font-bold text-white font-heading">Technology Leader & Architect</h3>
-              <p class="text-accentSecondary font-medium text-sm">Vision & Tech Leadership</p>
-              
+              <p class="text-accent font-medium text-sm">Vision & Tech Leadership</p>
+
               <ul class="space-y-3 text-sm text-white/70 list-none pl-0 pt-2">
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
-                  <span>Grow into a full-stack developer and technology leader capable of mentoring engineering teams.</span>
+                  <span>Grow into a full-stack developer and technology leader capable of mentoring engineering
+                    teams.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
                   <span>Architect highly scalable backend microservices and secure database systems.</span>
                 </li>
                 <li class="flex items-start gap-3">
-                  <span class="text-accentSecondary mt-1.5 flex-shrink-0">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accentSecondary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <span class="text-accent mt-1.5 flex-shrink-0">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none"
+                      viewBox="0 0 24 24" stroke="currentColor">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
                     </svg>
                   </span>
-                  <span>Drive product features from early ideation to global deployment, matching business and tech targets.</span>
+                  <span>Drive product features from early ideation to global deployment, matching business and tech
+                    targets.</span>
                 </li>
               </ul>
             </div>
-            
+
             <div class="pt-6 mt-6 border-t border-white/5">
               <div class="flex flex-wrap gap-2">
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Full-Stack</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">System Architecture</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Team Mentorship</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Product Strategy</span>
-                <span class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Leadership</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Full-Stack</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">System
+                  Architecture</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Team
+                  Mentorship</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Product
+                  Strategy</span>
+                <span
+                  class="bg-white/[0.03] text-white/85 border border-white/5 px-2.5 py-1 rounded text-xs font-mono">Leadership</span>
               </div>
             </div>
           </div>
@@ -1404,6 +1649,41 @@
           const nextBtn = document.getElementById('roadmap-next-btn');
           const scrollContainer = document.getElementById('roadmap-scroll-container');
 
+          function scrambleText(element, newText, duration = 300) {
+            const chars = '01[]_-+*/&%$#@!?{}<>';
+            const start = performance.now();
+            
+            if (element.dataset.animationId) {
+              cancelAnimationFrame(parseInt(element.dataset.animationId, 10));
+            }
+
+            function update(time) {
+              const elapsed = time - start;
+              const progress = Math.min(elapsed / duration, 1);
+              
+              const resolvedCount = Math.floor(newText.length * progress);
+              
+              let currentText = '';
+              for (let i = 0; i < newText.length; i++) {
+                if (i < resolvedCount) {
+                  currentText += newText[i];
+                } else {
+                  currentText += chars[Math.floor(Math.random() * chars.length)];
+                }
+              }
+              
+              element.textContent = currentText;
+              
+              if (progress < 1) {
+                element.dataset.animationId = requestAnimationFrame(update);
+              } else {
+                delete element.dataset.animationId;
+              }
+            }
+            
+            element.dataset.animationId = requestAnimationFrame(update);
+          }
+
           function updateRoadmap(index, resetAutoplay = false) {
             activeIndex = index;
 
@@ -1427,7 +1707,7 @@
               const companyLabel = station.querySelector('span:last-child');
 
               // Reset
-              outerRing.className = "w-7 h-7 rounded-full bg-[#0d0d0d] border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 station-outer-ring";
+              outerRing.className = "w-7 h-7 rounded-full bg-[#0d0d0d] border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 station-outer-ring relative";
               innerDot.className = "w-2.5 h-2.5 rounded-full transition-all duration-300 station-inner-dot";
               yearLabel.className = "text-[10px] font-mono mb-3 transition-colors duration-300 font-bold";
               companyLabel.className = "text-xs font-bold font-heading mt-3 text-center truncate w-24 transition-colors duration-300";
@@ -1457,24 +1737,68 @@
             // Transition Console display
             consoleBody.classList.add('opacity-0', 'translate-y-2');
 
+            // Trigger console body flicker/glitch Settling
+            consoleBody.classList.remove('animate-flicker');
+            void consoleBody.offsetWidth; // Reflow
+            consoleBody.classList.add('animate-flicker');
+
+            // Ticker status logs
+            const statusLog = document.getElementById('console-status-log');
+            if (statusLog) {
+              const logs = [
+                `SYS_SYNC // INIT_STOP_0${activeIndex + 1}`,
+                "DECRYPTING // DATA_PACKETS...",
+                "MATRIX // INJECTING_SKILLS...",
+                "SYS_STATUS // LINK_SECURE"
+              ];
+              
+              // Clear previous timers
+              if (statusLog.dataset.logTimer1) clearTimeout(parseInt(statusLog.dataset.logTimer1, 10));
+              if (statusLog.dataset.logTimer2) clearTimeout(parseInt(statusLog.dataset.logTimer2, 10));
+              if (statusLog.dataset.logTimer3) clearTimeout(parseInt(statusLog.dataset.logTimer3, 10));
+
+              // Cycle logs
+              statusLog.textContent = logs[0];
+              
+              statusLog.dataset.logTimer1 = setTimeout(() => {
+                statusLog.textContent = logs[1];
+              }, 100);
+
+              statusLog.dataset.logTimer2 = setTimeout(() => {
+                statusLog.textContent = logs[2];
+              }, 200);
+
+              statusLog.dataset.logTimer3 = setTimeout(() => {
+                statusLog.textContent = logs[3];
+              }, 350);
+            }
+
+            // Trigger scanner sweep
+            const scanner = document.getElementById('console-scanner');
+            if (scanner) {
+              scanner.classList.remove('scanner-active');
+              void scanner.offsetWidth; // Trigger reflow to restart animation
+              scanner.classList.add('scanner-active');
+            }
+
             setTimeout(() => {
               const currentData = roadmapData[activeIndex];
 
-              // Text values
+              // Text values with scramble effect
               consoleStopBadge.textContent = `STOP 0${activeIndex + 1} OF 0${totalStops}`;
               consoleTypeBadge.textContent = currentData.type;
-              consoleTitle.textContent = currentData.role;
-              consoleCompany.textContent = currentData.companyFull;
-              consoleLocation.textContent = currentData.location;
-              consoleDate.textContent = currentData.date;
+              scrambleText(consoleTitle, currentData.role, 350);
+              scrambleText(consoleCompany, currentData.companyFull, 400);
+              scrambleText(consoleLocation, currentData.location, 300);
+              scrambleText(consoleDate, currentData.date, 300);
 
               // Theme badges - all stops are now work experiences (red accent)
               consoleStopBadge.className = "px-2.5 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono uppercase tracking-wider rounded font-semibold";
               consoleCompany.className = "text-accent text-lg font-medium";
 
-              // Bullet list
-              consoleBullets.innerHTML = currentData.bullets.map(bullet => `
-              <li class="flex items-start gap-3">
+              // Bullet list (with staggered slide-in)
+              consoleBullets.innerHTML = currentData.bullets.map((bullet, index) => `
+              <li class="flex items-start gap-3 animate-bullet" style="animation-delay: ${index * 75}ms;">
                 <span class="text-accent mt-1.5 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7" />
@@ -1484,9 +1808,9 @@
               </li>
             `).join('');
 
-              // Skills tags
-              consoleSkills.innerHTML = currentData.skills.map(skill => `
-              <span class="bg-white/[0.03] text-white/80 border border-white/5 hover:border-white/15 px-3 py-1 rounded-md text-xs font-mono font-medium transition-all">${skill}</span>
+              // Skills tags (with staggered pop-in)
+              consoleSkills.innerHTML = currentData.skills.map((skill, index) => `
+              <span class="bg-white/[0.03] text-white/80 border border-white/5 hover:border-white/15 px-3 py-1 rounded-md text-xs font-mono font-medium transition-all animate-skill-tag" style="animation-delay: ${(currentData.bullets.length * 75) + (index * 50)}ms;">${skill}</span>
             `).join('');
 
               // Fade back in
