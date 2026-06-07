@@ -459,411 +459,731 @@
     </div>
   </section>
 
-  <!-- Skills Section -->
-  <section id="skills" class="py-20 px-4">
-    <div class="px-4 py-12 space-y-16 container mx-auto max-w-6xl">
+  <!-- Skills Section - Technical Arsenal -->
+  <section id="skills" class="relative bg-[#0D0D0D] overflow-hidden">
+    <!-- Background grid pattern -->
+    <div
+      class="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.012)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.012)_1px,transparent_1px)] bg-[size:40px_40px] pointer-events-none z-0">
+    </div>
+    <!-- Ambient glow orbs -->
+    <div
+      class="absolute top-1/3 left-0 w-[500px] h-[500px] bg-accent/[0.03] rounded-full blur-[150px] pointer-events-none">
+    </div>
+    <div
+      class="absolute bottom-0 right-1/4 w-[400px] h-[400px] bg-accent/[0.025] rounded-full blur-[120px] pointer-events-none">
+    </div>
 
-      <!-- Main Heading -->
-      <div class="text-center reveal">
-        <h1 class="text-5xl font-bold">
-          My <span class="text-accent">Skills</span>
-        </h1>
-        <p class="text-gray-400 mt-3 text-lg">Tools and technologies I use to build great products</p>
+    <style>
+      .perspective-stage {
+        perspective: 1600px;
+        perspective-origin: 50% 38%;
+      }
+
+      .preserve-3d {
+        transform-style: preserve-3d;
+      }
+
+      .skill-arsenal-card {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        backface-visibility: visible;
+        transform-style: preserve-3d;
+        transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.4s ease, box-shadow 0.4s ease, filter 0.6s ease;
+      }
+
+      .skill-arsenal-card:hover {
+        border-color: rgba(255, 60, 56, 0.3) !important;
+        box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6), 0 0 35px rgba(255, 60, 56, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
+      }
+
+      .skill-arsenal-card .skill-spotlight {
+        opacity: 0;
+        transition: opacity 0.4s ease;
+      }
+
+      .skill-arsenal-card:hover .skill-spotlight {
+        opacity: 1;
+      }
+
+      /* Card top accent line glow on hover */
+      .skill-arsenal-card .card-accent-line {
+        transition: opacity 0.4s ease, box-shadow 0.4s ease;
+      }
+
+      .skill-arsenal-card:hover .card-accent-line {
+        opacity: 1;
+        box-shadow: 0 2px 15px rgba(255, 60, 56, 0.4);
+      }
+
+      /* Watermark number */
+      .card-watermark {
+        transition: opacity 0.4s ease, transform 0.4s ease;
+      }
+
+      .skill-arsenal-card:hover .card-watermark {
+        opacity: 0.06;
+        transform: translate(-50%, -50%) scale(1.1);
+      }
+
+      /* Corner brackets */
+      .corner-bracket {
+        transition: opacity 0.3s ease, border-color 0.3s ease;
+      }
+
+      .skill-arsenal-card:hover .corner-bracket {
+        opacity: 1;
+        border-color: rgba(255, 60, 56, 0.5);
+      }
+
+      /* Skill pills */
+      .skill-pill {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+
+      .skill-arsenal-card:hover .skill-pill {
+        background: rgba(255, 60, 56, 0.08);
+        color: #fff;
+        border-color: rgba(255, 60, 56, 0.2);
+        box-shadow: 0 0 12px rgba(255, 60, 56, 0.08);
+      }
+
+      /* Icon container pulse */
+      @keyframes icon-ring-pulse {
+        0%,
+        100% {
+          box-shadow: 0 0 0 0 rgba(255, 60, 56, 0.3);
+        }
+
+        50% {
+          box-shadow: 0 0 0 6px rgba(255, 60, 56, 0);
+        }
+      }
+
+      .skill-arsenal-card:hover .card-icon-ring {
+        animation: icon-ring-pulse 2s ease-in-out infinite;
+        border-color: rgba(255, 60, 56, 0.4);
+        background: rgba(255, 60, 56, 0.1);
+      }
+
+      /* Sidebar vertical line animation */
+      @keyframes line-grow {
+        from {
+          height: 0;
+        }
+
+        to {
+          height: 100%;
+        }
+      }
+
+      .sidebar-accent-line {
+        animation: line-grow 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+    </style>
+
+    <div id="skills-horizontal" class="relative h-auto w-full flex flex-col z-10">
+
+      <!-- Center Aligned Header -->
+      <div class="container mx-auto max-w-6xl px-4 pt-20 pb-10 flex flex-col items-center text-center reveal relative z-20">
+        <!-- Label badge -->
+        <div class="inline-flex items-center gap-2 mb-4 justify-center">
+          <span class="flex h-1.5 w-8 bg-accent rounded-full"></span>
+          <span class="text-accent text-[11px] font-bold tracking-[0.4em] uppercase font-mono">TECHNICAL ARSENAL</span>
+        </div>
+
+        <h2 class="text-white text-4xl md:text-5xl font-bold font-heading uppercase tracking-tight mb-4 text-center">
+          SKILLS &amp; <span class="text-white/20">EXPERTISE</span>
+        </h2>
+
+        <p class="text-white/35 text-sm max-w-lg mx-auto leading-relaxed font-light text-center">
+          Technologies and tools I leverage to build high-performance mobile &amp; web products.
+        </p>
+
+        <!-- Stats row -->
+        <div class="flex flex-wrap items-center justify-center gap-6 mt-8 text-[10px] font-mono text-white/30 uppercase tracking-[0.2em]">
+          <div class="flex items-center gap-1.5">
+            <span class="text-white font-bold font-heading text-sm">25+</span>
+            <span>Technologies</span>
+          </div>
+          <div class="w-px h-3 bg-white/10"></div>
+          <div class="flex items-center gap-1.5">
+            <span class="text-white font-bold font-heading text-sm">05</span>
+            <span>Categories</span>
+          </div>
+        </div>
       </div>
 
-      <!-- Bento Grid Layout -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 reveal">
+      <!-- 3D Carousel Stage (Full Width) -->
+      <div class="w-full flex flex-col items-center justify-center relative overflow-hidden pt-8 pb-16 px-4 perspective-stage">
+        <!-- Depth fades -->
+        <div class="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#0D0D0D] to-transparent pointer-events-none z-20 hidden md:block"></div>
+        <div class="absolute inset-y-0 right-0 w-32 bg-gradient-to-l from-[#0D0D0D] to-transparent pointer-events-none z-20 hidden md:block"></div>
 
-        <!-- Card 1: Radar Chart (Row-span 2) -->
-        <div
-          class="md:col-span-1 md:row-span-2 bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[350px] md:h-[452px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 w-full h-full flex flex-col justify-between">
-            <div class="flex items-center justify-between mb-4">
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Overview</span>
-              <span class="text-[10px] font-mono tracking-wider uppercase text-white/40">Radar Map</span>
+        <!-- 3D Track Container -->
+        <div class="relative w-[280px] md:w-[340px] h-[310px] md:h-[330px] preserve-3d transition-transform duration-700 ease-out cursor-grab active:cursor-grabbing z-10" id="skills-carousel">
+          
+          <!-- 01: Languages & Frameworks -->
+          <div data-index="0"
+            class="skill-arsenal-card group absolute top-0 left-0 w-full h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-md flex flex-col p-5 md:p-6 pb-4 justify-between cursor-default">
+            <!-- Top accent line -->
+            <div
+              class="card-accent-line absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/60 to-transparent opacity-60">
             </div>
-            <div class="flex-grow relative min-h-0">
-              <canvas id="skillsRadarChart"></canvas>
+            <!-- Watermark number -->
+            <span
+              class="card-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] md:text-[110px] font-bold font-heading text-white/[0.03] pointer-events-none select-none leading-none">01</span>
+            <!-- Spotlight -->
+            <div class="skill-spotlight pointer-events-none absolute -inset-px rounded-2xl"
+              style="background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,60,56,0.1),transparent 40%)">
             </div>
-          </div>
-        </div>
+            <!-- Corner brackets -->
+            <div
+              class="corner-bracket absolute top-3 left-3 w-4 h-4 border-t border-l border-white/10 opacity-40 rounded-tl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 right-3 w-4 h-4 border-t border-r border-white/10 opacity-40 rounded-tr-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/10 opacity-40 rounded-bl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/10 opacity-40 rounded-br-sm">
+            </div>
 
-        <!-- Card 2: Flutter (Col-span 2) -->
-        <div
-          class="md:col-span-2 bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-auto md:h-[210px] cursor-default p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-
-          <div class="relative z-10 grid grid-cols-1 sm:grid-cols-2 gap-6 h-full">
-            <div class="flex flex-col justify-between h-full">
-              <div class="flex items-start justify-between">
-                <div class="flex items-center gap-3">
-                  <div
-                    class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                    <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                      <path
-                        d="M14.314 0L2.3 12l3.414 3.414L20.142 3.414H14.314zM20.142 20.586L10.9 11.344l-3.414 3.414L20.142 24v-3.414z" />
-                    </svg>
-                  </div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                <div>
                   <span
-                    class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Mobile</span>
+                    class="text-accent text-[11px] font-bold tracking-[0.25em] uppercase mb-1.5 block font-mono">01</span>
+                  <h3
+                    class="text-xl md:text-[1.4rem] font-bold tracking-tight text-white font-heading leading-tight">
+                    Languages &amp;<br>Frameworks</h3>
                 </div>
-                <div class="text-right sm:hidden">
+                <div
+                  class="card-icon-ring w-9 h-9 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 mt-1">
+                  <svg class="w-4.5 h-4.5 text-white/50 group-hover:text-accent transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />
+                  </svg>
+                </div>
+              </div>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Flutter</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Dart</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">HTML</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">CSS</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">JavaScript</span>
+              </div>
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.04]">
+                <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest">Core Stack</span>
+                <span class="text-[10px] font-mono text-accent/60">5 skills</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 02: State Management -->
+          <div data-index="1"
+            class="skill-arsenal-card group absolute top-0 left-0 w-full h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-md flex flex-col p-5 md:p-6 pb-4 justify-between cursor-default">
+            <div
+              class="card-accent-line absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/60 to-transparent opacity-60">
+            </div>
+            <span
+              class="card-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] md:text-[110px] font-bold font-heading text-white/[0.03] pointer-events-none select-none leading-none">02</span>
+            <div class="skill-spotlight pointer-events-none absolute -inset-px rounded-2xl"
+              style="background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,60,56,0.1),transparent 40%)">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 left-3 w-4 h-4 border-t border-l border-white/10 opacity-40 rounded-tl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 right-3 w-4 h-4 border-t border-r border-white/10 opacity-40 rounded-tr-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/10 opacity-40 rounded-bl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/10 opacity-40 rounded-br-sm">
+            </div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                <div>
                   <span
-                    class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Expert</span>
-                  <span class="text-xs font-mono font-semibold text-accent block mt-0.5">95%</span>
+                    class="text-accent text-[11px] font-bold tracking-[0.25em] uppercase mb-1.5 block font-mono">02</span>
+                  <h3
+                    class="text-xl md:text-[1.4rem] font-bold tracking-tight text-white font-heading leading-tight">
+                    State<br>Management</h3>
+                </div>
+                <div
+                  class="card-icon-ring w-9 h-9 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 mt-1">
+                  <svg class="w-4.5 h-4.5 text-white/50 group-hover:text-accent transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z" />
+                  </svg>
                 </div>
               </div>
-              <div class="mt-4 sm:mt-0">
-                <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">
-                  Flutter</h3>
-                <p class="text-xs text-gray-400 leading-relaxed">Cross-platform app development</p>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Provider</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">GetX</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">BLoC</span>
               </div>
-              <div class="mt-4">
-                <div class="relative z-10 skill-progress-bg">
-                  <div
-                    class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-                    data-progress="95%" style="width: 0%;"></div>
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.04]">
+                <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest">Architecture</span>
+                <span class="text-[10px] font-mono text-accent/60">3 skills</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- 03: Databases & APIs -->
+          <div data-index="2"
+            class="skill-arsenal-card group absolute top-0 left-0 w-full h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-md flex flex-col p-5 md:p-6 pb-4 justify-between cursor-default">
+            <div
+              class="card-accent-line absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/60 to-transparent opacity-60">
+            </div>
+            <span
+              class="card-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] md:text-[110px] font-bold font-heading text-white/[0.03] pointer-events-none select-none leading-none">03</span>
+            <div class="skill-spotlight pointer-events-none absolute -inset-px rounded-2xl"
+              style="background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,60,56,0.1),transparent 40%)">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 left-3 w-4 h-4 border-t border-l border-white/10 opacity-40 rounded-tl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 right-3 w-4 h-4 border-t border-r border-white/10 opacity-40 rounded-tr-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/10 opacity-40 rounded-bl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/10 opacity-40 rounded-br-sm">
+            </div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <span
+                    class="text-accent text-[11px] font-bold tracking-[0.25em] uppercase mb-1.5 block font-mono">03</span>
+                  <h3
+                    class="text-xl md:text-[1.4rem] font-bold tracking-tight text-white font-heading leading-tight">
+                    Databases<br>&amp; APIs</h3>
+                </div>
+                <div
+                  class="card-icon-ring w-9 h-9 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 mt-1">
+                  <svg class="w-4.5 h-4.5 text-white/50 group-hover:text-accent transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M20.25 6.375c0 2.278-3.694 4.125-8.25 4.125S3.75 8.653 3.75 6.375m16.5 0c0-2.278-3.694-4.125-8.25-4.125S3.75 4.097 3.75 6.375m16.5 0v11.25c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125V6.375m16.5 3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125m16.5 3.75c0 2.278-3.694 4.125-8.25 4.125s-8.25-1.847-8.25-4.125" />
+                  </svg>
                 </div>
               </div>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Firebase</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">REST APIs</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">HTTP / Dio</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Hive</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">SQLite</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Firestore</span>
+              </div>
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.04]">
+                <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest">Backend</span>
+                <span class="text-[10px] font-mono text-accent/60">6 skills</span>
+              </div>
             </div>
+          </div>
 
+          <!-- 04: Tools & Platforms -->
+          <div data-index="3"
+            class="skill-arsenal-card group absolute top-0 left-0 w-full h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-md flex flex-col p-5 md:p-6 pb-4 justify-between cursor-default">
             <div
-              class="border-t sm:border-t-0 sm:border-l border-white/5 pt-4 sm:pt-0 sm:pl-6 flex flex-col justify-between h-full">
-              <div>
-                <div class="hidden sm:flex items-center justify-between">
-                  <span class="text-[10px] font-mono tracking-wider uppercase text-white/30">Key Focus Areas</span>
-                  <div class="text-right">
-                    <span
-                      class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors inline">Expert</span>
-                    <span class="text-xs font-mono font-semibold text-accent inline ml-2">95%</span>
-                  </div>
+              class="card-accent-line absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/60 to-transparent opacity-60">
+            </div>
+            <span
+              class="card-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] md:text-[110px] font-bold font-heading text-white/[0.03] pointer-events-none select-none leading-none">04</span>
+            <div class="skill-spotlight pointer-events-none absolute -inset-px rounded-2xl"
+              style="background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,60,56,0.1),transparent 40%)">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 left-3 w-4 h-4 border-t border-l border-white/10 opacity-40 rounded-tl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute top-3 right-3 w-4 h-4 border-t border-r border-white/10 opacity-40 rounded-tr-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/10 opacity-40 rounded-bl-sm">
+            </div>
+            <div
+              class="corner-bracket absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/10 opacity-40 rounded-br-sm">
+            </div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <span
+                    class="text-accent text-[11px] font-bold tracking-[0.25em] uppercase mb-1.5 block font-mono">04</span>
+                  <h3
+                    class="text-xl md:text-[1.4rem] font-bold tracking-tight text-white font-heading leading-tight">
+                    Tools &amp;<br>Platforms</h3>
                 </div>
-                <ul class="text-xs text-gray-400 space-y-2 mt-2 sm:mt-1">
-                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-                    Cross-platform Android & iOS</li>
-                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span>
-                    Responsive Custom UI & Animations</li>
-                  <li class="flex items-center gap-2"><span class="h-1.5 w-1.5 rounded-full bg-accent"></span> REST API
-                    Integration & Native Plugins</li>
-                </ul>
+                <div
+                  class="card-icon-ring w-9 h-9 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 mt-1">
+                  <svg class="w-4.5 h-4.5 text-white/50 group-hover:text-accent transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M11.42 15.17l-5.59-3.07a.48.48 0 01-.22-.68l3.34-6.27a.48.48 0 01.68-.22l5.59 3.07m-3.8 7.17l5.59 3.07a.48.48 0 00.68-.22l3.34-6.27a.48.48 0 00-.22-.68l-5.59-3.07m-3.8 7.17l3.8-7.17m0 0L6.54 3.32" />
+                  </svg>
+                </div>
               </div>
-              <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest hidden sm:block">Primary
-                Specialization</span>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Android Studio</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">VS Code</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Git &amp; GitHub</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Postman</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Figma</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Canva</span>
+              </div>
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.04]">
+                <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest">Dev Environment</span>
+                <span class="text-[10px] font-mono text-accent/60">6 skills</span>
+              </div>
             </div>
           </div>
-        </div>
 
-        <!-- Card 3: State Management -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M11 4a2 2 0 114 0v1a2 2 0 01-2 2H11a2 2 0 01-2-2V4zM4 13a2 2 0 114 0v1a2 2 0 01-2 2H4a2 2 0 01-2-2v-1zM18 13a2 2 0 114 0v1a2 2 0 01-2 2h-4a2 2 0 01-2-2v-1z" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 15l2 2m0 0l2-2m-2 2V8" />
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Mobile</span>
-            </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Advanced</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">90%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">State
-              Management</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Provider, GetX</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
+          <!-- 05: Domain Expertise -->
+          <div data-index="4"
+            class="skill-arsenal-card group absolute top-0 left-0 w-full h-full overflow-hidden rounded-2xl border border-white/[0.06] bg-white/[0.015] backdrop-blur-md flex flex-col p-5 md:p-6 pb-4 justify-between cursor-default">
             <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="90%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 4: Firebase -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M3.89 15.75L11.58.62a.49.49 0 0 1 .84 0l1.97 3.73-10.5 11.4zM20.11 17.5l-2-12.22a.49.49 0 0 0-.84-.28L3.25 18.23l7.94 4.45a1.47 1.47 0 0 0 1.62 0l7.3-4.18a.49.49 0 0 0 0-.85zM14.24 6.75l2.45 4.67-8.31 4.7z" />
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Mobile</span>
+              class="card-accent-line absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/60 to-transparent opacity-60">
             </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/65 transition-colors block">Intermediate</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">80%</span>
+            <span
+              class="card-watermark absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 text-[90px] md:text-[110px] font-bold font-heading text-white/[0.03] pointer-events-none select-none leading-none">05</span>
+            <div class="skill-spotlight pointer-events-none absolute -inset-px rounded-2xl"
+              style="background:radial-gradient(600px circle at var(--mx,50%) var(--my,50%),rgba(255,60,56,0.1),transparent 40%)">
             </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">
-              Firebase</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Auth, Firestore, Push Notifications</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
             <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="80%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 5: HTML -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M1.5 0h21l-1.91 21.56L12 24l-8.59-2.44L1.5 0zm17 5H5.5l.4 4.5h10.4l-.45 5.08L12 15.92l-3.45-1.34-.23-2.58H5.78l.4 4.7 5.82 1.65 5.82-1.65.68-7.78H6.1l-.1-1.72h12.92l-.4-4.5z" />
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Web</span>
+              class="corner-bracket absolute top-3 left-3 w-4 h-4 border-t border-l border-white/10 opacity-40 rounded-tl-sm">
             </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Expert</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">92%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">HTML
-            </h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Semantic markup & accessibility</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
             <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="92%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 6: CSS -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M1.5 0h21l-1.91 21.56L12 24l-8.59-2.44L1.5 0zm17.06 5H8.38l-.13 1.5h8.54l-.45 5.08L12 15.92l-3.45-1.34-.23-2.58H6.18l.4 4.7 5.42 1.54 5.42-1.54.68-7.78H8.8l-.1-1.72h9.72l-.36-4z" />
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Web</span>
+              class="corner-bracket absolute top-3 right-3 w-4 h-4 border-t border-r border-white/10 opacity-40 rounded-tr-sm">
             </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Advanced</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">88%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">CSS
-            </h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Responsive layouts, Flexbox, Grid</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
             <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="88%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 7: JavaScript -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M0 0h24v24H0V0zm19.86 16.5c-.75-1.12-1.87-1.87-3.74-1.87-1.62 0-2.62.87-2.62 2.12 0 1.62 1.38 2.12 3.12 2.87 2.12.88 3.5.13 3.5 3.13 0 2.37-1.75 3.75-4.5 3.75-2.87 0-4.37-1.38-5.12-3.25h2.87c.38.75 1.13 1.38 2.25 1.38 1.13 0 1.63-.5 1.63-1.13 0-1-.75-1.38-2.38-2-2.12-.88-4.25-1.38-4.25-3.88 0-2.25 1.75-3.63 4.25-3.63 2.12 0 3.63.88 4.25 2.63h-2.88z" />
-                </svg>
-              </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">Web</span>
+              class="corner-bracket absolute bottom-3 left-3 w-4 h-4 border-b border-l border-white/10 opacity-40 rounded-bl-sm">
             </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/65 transition-colors block">Intermediate</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">78%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">
-              JavaScript</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">DOM, Events, Interactivity</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
             <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="78%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 8: Figma -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" viewBox="0 0 24 24" fill="currentColor">
-                  <path
-                    d="M12 0C8.688 0 6 2.688 6 6v6C6 15.312 8.688 18 12 18c3.312 0 6-2.688 6-6V6c0-3.312-2.688-6-6-6zm0 12c-1.656 0-3-1.344-3-3s1.344-3 3-3 3 1.344 3 3-1.344 3-3 3z" />
-                  <path d="M6 18c0 3.312 2.688 6 6 6 3.312 0 6-2.688 6-6v-6H6v6z" />
-                </svg>
+              class="corner-bracket absolute bottom-3 right-3 w-4 h-4 border-b border-r border-white/10 opacity-40 rounded-br-sm">
+            </div>
+            <div class="relative z-10 h-full flex flex-col">
+              <div class="flex items-start justify-between mb-4">
+                <div>
+                  <span
+                    class="text-accent text-[11px] font-bold tracking-[0.25em] uppercase mb-1.5 block font-mono">05</span>
+                  <h3
+                    class="text-xl md:text-[1.4rem] font-bold tracking-tight text-white font-heading leading-tight">
+                    Domain<br>Expertise</h3>
+                </div>
+                <div
+                  class="card-icon-ring w-9 h-9 rounded-xl border border-white/10 bg-white/[0.03] flex items-center justify-center transition-all duration-300 flex-shrink-0 ml-4 mt-1">
+                  <svg class="w-4.5 h-4.5 text-white/50 group-hover:text-accent transition-colors" fill="none"
+                    viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.5">
+                    <path stroke-linecap="round" stroke-linejoin="round"
+                      d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09zM18.259 8.715L18 9.75l-.259-1.035a3.375 3.375 0 00-2.455-2.456L14.25 6l1.036-.259a3.375 3.375 0 002.455-2.456L18 2.25l.259 1.035a3.375 3.375 0 002.455 2.456L21.75 6l-1.036.259a3.375 3.375 0 00-2.455 2.456zM16.894 20.567L16.5 21.75l-.394-1.183a2.25 2.25 0 00-1.423-1.423L13.5 18.75l1.183-.394a2.25 2.25 0 001.423-1.423l.394-1.183.394 1.183a2.25 2.25 0 001.423 1.423l1.183.394-1.183.394a2.25 2.25 0 00-1.423 1.423z" />
+                  </svg>
+                </div>
               </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">UI/UX</span>
-            </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Advanced</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">88%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">Figma
-            </h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Prototyping & UI Systems</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
-            <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="88%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 9: Canva -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z" />
-                </svg>
+              <div class="flex flex-wrap gap-2 mt-auto">
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Cross-Platform Apps</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Manual Testing</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Play Store Deploy</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">Responsive UI</span>
+                <span
+                  class="skill-pill text-white/60 text-[10px] md:text-xs font-medium px-3 py-1.5 bg-white/[0.04] rounded-full border border-white/[0.06]">UI/UX Design</span>
               </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">UI/UX</span>
-            </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Expert</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">92%</span>
-            </div>
-          </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">Canva
-            </h3>
-            <p class="text-xs text-gray-400 leading-relaxed">Graphics & branding</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
-            <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="92%" style="width: 0%;"></div>
-          </div>
-        </div>
-
-        <!-- Card 10: Manual Testing -->
-        <div
-          class="bg-[#121212]/50 border border-white/5 hover:border-white/12 hover:shadow-[0_20px_40px_rgba(255,60,56,0.02)] rounded-2xl backdrop-blur-xl relative overflow-hidden transition-all duration-500 group card-glow h-[210px] cursor-default flex flex-col justify-between p-6">
-          <div
-            class="spotlight-overlay absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-2xl"
-            style="background: radial-gradient(350px circle at var(--mouse-x, 0px) var(--mouse-y, 0px), rgba(255, 255, 255, 0.04), transparent 80%); z-index: 1;">
-          </div>
-          <div class="relative z-10 flex items-start justify-between">
-            <div class="flex items-center gap-3">
-              <div
-                class="text-white/50 group-hover:text-white transition-all duration-300 transform group-hover:scale-110 drop-shadow-md">
-                <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
-                  <path stroke-linecap="round" stroke-linejoin="round"
-                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
-                  <path stroke-linecap="round" stroke-linejoin="round" d="M9 14l2 2 4-4" />
-                </svg>
+              <div class="flex items-center justify-between mt-4 pt-3 border-t border-white/[0.04]">
+                <span class="text-[9px] font-mono text-white/20 uppercase tracking-widest">Specialization</span>
+                <span class="text-[10px] font-mono text-accent/60">5 skills</span>
               </div>
-              <span
-                class="text-[10px] font-mono tracking-widest uppercase text-accent/80 px-2 py-0.5 rounded border border-accent/20 bg-accent/5">QA</span>
-            </div>
-            <div class="text-right">
-              <span
-                class="text-[10px] font-mono tracking-wider uppercase text-white/40 group-hover:text-white/60 transition-colors block">Advanced</span>
-              <span class="text-xs font-mono font-semibold text-accent block mt-0.5">88%</span>
             </div>
           </div>
-          <div class="relative z-10 flex-grow mt-4 flex flex-col justify-end">
-            <h3 class="text-lg font-bold font-heading text-white/90 group-hover:text-white transition-colors mb-1">
-              Manual Testing</h3>
-            <p class="text-xs text-gray-400 leading-relaxed">End-to-end mobile testing (Android/iOS), UI/UX validation,
-              functional/regression runs, and bug tracking.</p>
-          </div>
-          <div class="relative z-10 mt-4 skill-progress-bg">
-            <div
-              class="skill-progress-fill h-full bg-gradient-to-r from-accent/50 to-accent rounded-full transition-all duration-1000 ease-out"
-              data-progress="88%" style="width: 0%;"></div>
-          </div>
+
         </div>
 
+        <!-- Carousel Nav Controls -->
+        <div class="flex items-center gap-6 mt-12 z-20 relative">
+          <button id="carousel-prev" class="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/10 hover:border-white/30 text-white flex items-center justify-center transition-all shadow-lg active:scale-95">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" />
+            </svg>
+          </button>
+          
+          <div class="flex gap-2.5 items-center justify-center" id="carousel-dots">
+            <span class="w-2 h-2 rounded-full bg-accent transition-all duration-300 cursor-pointer" data-index="0"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" data-index="1"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" data-index="2"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" data-index="3"></span>
+            <span class="w-2 h-2 rounded-full bg-white/20 transition-all duration-300 cursor-pointer" data-index="4"></span>
+          </div>
+
+          <button id="carousel-next" class="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] hover:bg-white/10 hover:border-white/30 text-white flex items-center justify-center transition-all shadow-lg active:scale-95">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" />
+            </svg>
+          </button>
+        </div>
       </div>
     </div>
+
+    <!-- Skills JS -->
+    <script>
+      (function () {
+        const carousel = document.getElementById('skills-carousel');
+        const cards = document.querySelectorAll('.skill-arsenal-card');
+        const prevBtn = document.getElementById('carousel-prev');
+        const nextBtn = document.getElementById('carousel-next');
+        const dots = document.querySelectorAll('#carousel-dots > span');
+
+        const totalCards = cards.length;
+        const angleStep = 360 / totalCards;
+        let currentAngle = 0;
+        let activeIndex = 0;
+        let isDragging = false;
+        let startX = 0;
+        let startAngle = 0;
+        let autoplayTimer = null;
+        let isHovered = false;
+
+        // Track responsive radius
+        let radius = window.innerWidth < 768 ? 200 : 320;
+
+        // Set card transformations and update layout
+        function updateCarousel() {
+          let normalizedCarouselAngle = ((currentAngle % 360) + 360) % 360;
+
+          // Apply rotation to the carousel stage
+          carousel.style.transform = `rotateX(-6deg) rotateY(${currentAngle}deg)`;
+
+          cards.forEach((card, idx) => {
+            const cardAngle = idx * angleStep;
+            const relativeAngle = ((cardAngle + currentAngle) % 360 + 360) % 360;
+            const diff = Math.min(relativeAngle, 360 - relativeAngle);
+
+            let opacity = 1;
+            let scale = 1;
+            let blur = 0;
+            let zIndex = 10;
+            const isMobile = window.innerWidth < 768;
+
+            if (diff < 10) {
+              opacity = 1;
+              scale = 1.05;
+              zIndex = 30;
+              card.style.pointerEvents = 'auto';
+            } else if (diff < 90) {
+              opacity = isMobile ? 0 : 0.55;
+              scale = 0.95;
+              zIndex = 20;
+              card.style.pointerEvents = isMobile ? 'none' : 'auto';
+            } else {
+              opacity = isMobile ? 0 : 0.15;
+              scale = 0.85;
+              blur = isMobile ? 0 : 1.5;
+              zIndex = 10;
+              card.style.pointerEvents = 'none';
+            }
+
+            card.style.opacity = opacity;
+            card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px) scale(${scale})`;
+            card.style.filter = blur > 0 ? `blur(${blur}px)` : 'none';
+            card.style.zIndex = zIndex;
+          });
+
+          let calculatedIndex = Math.round((360 - normalizedCarouselAngle) / angleStep) % totalCards;
+          activeIndex = calculatedIndex;
+
+          dots.forEach((dot, idx) => {
+            if (idx === activeIndex) {
+              dot.classList.remove('bg-white/20');
+              dot.classList.add('bg-accent', 'w-5');
+            } else {
+              dot.classList.remove('bg-accent', 'w-5');
+              dot.classList.add('bg-white/20', 'w-2');
+            }
+          });
+        }
+
+        function setupPositions() {
+          radius = window.innerWidth < 768 ? 200 : 320;
+          updateCarousel();
+        }
+
+        window.addEventListener('resize', setupPositions);
+
+        function rotateTo(index) {
+          const currentCycle = Math.round(currentAngle / 360);
+          let targetAngle = -index * angleStep;
+          let adjustedTarget = targetAngle + currentCycle * 360;
+          if (adjustedTarget - currentAngle > 180) adjustedTarget -= 360;
+          if (adjustedTarget - currentAngle < -180) adjustedTarget += 360;
+
+          currentAngle = adjustedTarget;
+          updateCarousel();
+        }
+
+        function next() {
+          currentAngle -= angleStep;
+          updateCarousel();
+        }
+
+        function prev() {
+          currentAngle += angleStep;
+          updateCarousel();
+        }
+
+        if (prevBtn) prevBtn.addEventListener('click', () => { prev(); resetAutoplay(); });
+        if (nextBtn) nextBtn.addEventListener('click', () => { next(); resetAutoplay(); });
+
+        dots.forEach(dot => {
+          dot.addEventListener('click', () => {
+            const idx = parseInt(dot.getAttribute('data-index'), 10);
+            rotateTo(idx);
+            resetAutoplay();
+          });
+        });
+
+        // Drag-to-rotate support
+        function handleDragStart(clientX) {
+          isDragging = true;
+          startX = clientX;
+          startAngle = currentAngle;
+          stopAutoplay();
+          if (carousel) carousel.style.transition = 'none';
+          cards.forEach(card => card.style.transition = 'none');
+        }
+
+        function handleDragMove(clientX) {
+          if (!isDragging) return;
+          const deltaX = clientX - startX;
+          const sensitivity = window.innerWidth < 768 ? 0.35 : 0.22;
+          currentAngle = startAngle + deltaX * sensitivity;
+          updateCarousel();
+        }
+
+        function handleDragEnd() {
+          if (!isDragging) return;
+          isDragging = false;
+          
+          if (carousel) carousel.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+          cards.forEach(card => card.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1)');
+          
+          const snappedAngle = Math.round(currentAngle / angleStep) * angleStep;
+          currentAngle = snappedAngle;
+          updateCarousel();
+          startAutoplay();
+        }
+
+        if (carousel) {
+          carousel.addEventListener('mousedown', e => {
+            e.preventDefault();
+            handleDragStart(e.clientX);
+          });
+          
+          window.addEventListener('mousemove', e => {
+            handleDragMove(e.clientX);
+          });
+
+          window.addEventListener('mouseup', handleDragEnd);
+
+          carousel.addEventListener('touchstart', e => {
+            handleDragStart(e.touches[0].clientX);
+          }, { passive: true });
+
+          carousel.addEventListener('touchmove', e => {
+            handleDragMove(e.touches[0].clientX);
+          }, { passive: true });
+
+          carousel.addEventListener('touchend', handleDragEnd);
+        }
+
+        // Autoplay rotation every 5 seconds
+        function startAutoplay() {
+          if (autoplayTimer) clearInterval(autoplayTimer);
+          autoplayTimer = setInterval(() => {
+            if (!isDragging && !isHovered) {
+              next();
+            }
+          }, 5000);
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        function resetAutoplay() {
+          stopAutoplay();
+          setTimeout(() => {
+            if (!isDragging && !isHovered) startAutoplay();
+          }, 8000);
+        }
+
+        if (carousel) {
+          carousel.addEventListener('mouseenter', () => { isHovered = true; stopAutoplay(); });
+          carousel.addEventListener('mouseleave', () => { isHovered = false; startAutoplay(); });
+        }
+
+        // Spotlight Mouse Move effect within active/side cards
+        cards.forEach(card => {
+          card.addEventListener('mousemove', e => {
+            const r = card.getBoundingClientRect();
+            const x = e.clientX - r.left, y = e.clientY - r.top;
+            const rx = ((y - r.height / 2) / (r.height / 2)) * -4;
+            const ry = ((x - r.width / 2) / (r.width / 2)) * 4;
+            
+            const cardAngle = parseInt(card.getAttribute('data-index'), 10) * angleStep;
+            card.style.transform = `rotateY(${cardAngle}deg) translateZ(${radius}px) scale(1.05) rotateX(${rx}deg) rotateY(${ry}deg)`;
+            card.style.setProperty('--mx', x + 'px');
+            card.style.setProperty('--my', y + 'px');
+          });
+
+          card.addEventListener('mouseleave', () => {
+            updateCarousel();
+          });
+        });
+
+        // Initialize positions
+        setupPositions();
+        startAutoplay();
+      })();
+    </script>
   </section>
+
 
   <!-- Projects Section -->
   <section id="projects" class="py-20 px-4 bg-black/30">
@@ -910,8 +1230,7 @@
     <!-- Ambient glowing lights -->
     <div class="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none z-0">
     </div>
-    <div
-      class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none z-0">
+    <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-accent/5 rounded-full blur-[120px] pointer-events-none z-0">
     </div>
 
     <style>
@@ -947,6 +1266,7 @@
         0% {
           transform: rotate(0deg);
         }
+
         100% {
           transform: rotate(360deg);
         }
@@ -1019,12 +1339,15 @@
           top: 0%;
           opacity: 0;
         }
+
         10% {
           opacity: 1;
         }
+
         90% {
           opacity: 1;
         }
+
         100% {
           top: 100%;
           opacity: 0;
@@ -1041,6 +1364,7 @@
           opacity: 0;
           transform: translateX(-15px);
         }
+
         to {
           opacity: 1;
           transform: translateX(0);
@@ -1058,6 +1382,7 @@
           opacity: 0;
           transform: scale(0.85);
         }
+
         to {
           opacity: 1;
           transform: scale(1);
@@ -1076,10 +1401,13 @@
 
       /* Traveling laser head pulsing glow */
       @keyframes laser-glow {
-        0%, 100% {
+
+        0%,
+        100% {
           transform: translate(50%, -50%) scale(1);
           box-shadow: 0 0 10px #FF3C38, 0 0 20px #FF3C38, 0 0 30px rgba(255, 60, 56, 0.5);
         }
+
         50% {
           transform: translate(50%, -50%) scale(1.3);
           box-shadow: 0 0 15px #FF3C38, 0 0 30px #FF3C38, 0 0 45px #FF3C38, 0 0 60px rgba(255, 60, 56, 0.8);
@@ -1095,6 +1423,7 @@
         0% {
           transform: translateX(-100%);
         }
+
         100% {
           transform: translateX(100%);
         }
@@ -1109,25 +1438,32 @@
 
       /* Holographic settled flicker animation */
       @keyframes glitch-flicker {
-        0%, 100% {
+
+        0%,
+        100% {
           opacity: 1;
           filter: brightness(1) contrast(1) blur(0px);
         }
+
         15% {
           opacity: 0.75;
           filter: brightness(1.2) contrast(1.15) blur(0.5px);
         }
+
         30% {
           opacity: 0.95;
           filter: brightness(0.9) contrast(0.9);
         }
+
         45% {
           opacity: 0.8;
           filter: brightness(1.1) contrast(1.1) blur(0.2px);
         }
+
         60% {
           opacity: 0.9;
         }
+
         75% {
           opacity: 0.85;
           filter: brightness(1.05) contrast(1.05);
@@ -1140,19 +1476,36 @@
 
       /* Signal Link Visualizer Bouncing Waves */
       @keyframes wave-bounce {
-        0%, 100% {
+
+        0%,
+        100% {
           height: 3px;
         }
+
         50% {
           height: 12px;
         }
       }
 
-      .animate-wave-bar-1 { animation: wave-bounce 0.8s ease-in-out infinite; }
-      .animate-wave-bar-2 { animation: wave-bounce 1.1s ease-in-out infinite 0.1s; }
-      .animate-wave-bar-3 { animation: wave-bounce 0.9s ease-in-out infinite 0.2s; }
-      .animate-wave-bar-4 { animation: wave-bounce 1.3s ease-in-out infinite 0.15s; }
-      .animate-wave-bar-5 { animation: wave-bounce 0.7s ease-in-out infinite 0.3s; }
+      .animate-wave-bar-1 {
+        animation: wave-bounce 0.8s ease-in-out infinite;
+      }
+
+      .animate-wave-bar-2 {
+        animation: wave-bounce 1.1s ease-in-out infinite 0.1s;
+      }
+
+      .animate-wave-bar-3 {
+        animation: wave-bounce 0.9s ease-in-out infinite 0.2s;
+      }
+
+      .animate-wave-bar-4 {
+        animation: wave-bounce 1.3s ease-in-out infinite 0.15s;
+      }
+
+      .animate-wave-bar-5 {
+        animation: wave-bounce 0.7s ease-in-out infinite 0.3s;
+      }
     </style>
 
     <div class="container mx-auto max-w-6xl relative z-10">
@@ -1191,7 +1544,9 @@
                 <div class="absolute inset-0 progress-flow-runner"></div>
               </div>
               <!-- Traveling Laser Head (unclipped) -->
-              <div class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border border-accent shadow-[0_0_12px_#FF3C38,0_0_24px_#FF3C38] translate-x-1/2 z-20 animate-laser-glow pointer-events-none"></div>
+              <div
+                class="absolute right-0 top-1/2 -translate-y-1/2 w-3.5 h-3.5 rounded-full bg-white border border-accent shadow-[0_0_12px_#FF3C38,0_0_24px_#FF3C38] translate-x-1/2 z-20 animate-laser-glow pointer-events-none">
+              </div>
             </div>
 
             <!-- Stop 01: MixA'lore -->
@@ -1273,10 +1628,11 @@
       <div
         class="relative bg-black/40 border border-white/5 rounded-2xl p-6 sm:p-10 shadow-2xl backdrop-blur-md overflow-hidden console-grid-bg">
         <!-- Laser scanner line -->
-        <div id="console-scanner" class="absolute left-0 right-0 h-[2px] bg-accent/60 shadow-[0_0_8px_rgba(255,60,56,0.6)] pointer-events-none z-20 opacity-0"></div>
+        <div id="console-scanner"
+          class="absolute left-0 right-0 h-[2px] bg-accent/60 shadow-[0_0_8px_rgba(255,60,56,0.6)] pointer-events-none z-20 opacity-0">
+        </div>
         <!-- Accent line decor -->
-        <div
-          class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/50 to-transparent">
+        <div class="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-accent via-accent/50 to-transparent">
         </div>
         <div class="absolute -bottom-10 -right-10 w-40 h-40 bg-accent/5 rounded-full blur-3xl"></div>
 
@@ -1340,10 +1696,12 @@
             </div>
 
             <!-- Signal Visualizer & Terminal Logger -->
-            <div class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between font-mono text-[9px] tracking-wider text-white/30 select-none">
+            <div
+              class="pt-4 mt-4 border-t border-white/5 flex items-center justify-between font-mono text-[9px] tracking-wider text-white/30 select-none">
               <div class="flex items-center gap-1.5">
                 <span class="flex h-1.5 w-1.5 relative">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
+                  <span
+                    class="animate-ping absolute inline-flex h-full w-full rounded-full bg-accent opacity-75"></span>
                   <span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-accent"></span>
                 </span>
                 <span id="console-status-log">SYS_STATUS // LINK_SECURE</span>
@@ -1529,275 +1887,275 @@
 
     <!-- ROADMAP LOGIC -->
     <script>
-        (function () {
-          const roadmapData = [
-            {
-              year: "2025-26",
-              company: "MixA'lore",
-              companyFull: "MixA'lore Social platform",
-              location: "Kochi, India",
-              role: "Flutter Developer",
-              date: "02/2025 - 05/2026",
-              type: "Freelance Project",
-              bullets: [
-                "Developed a social networking and event discovery platform connecting users with communities and events.",
-                "Implemented secure authentication, user profile management, and subscription-based features.",
-                "Integrated location-based services to help users discover nearby events and connect.",
-                "Built and maintained a seamless cross-platform experience for Android and iOS using Flutter.",
-                "Focused on performance optimization, scalable architecture, and intuitive UI/UX design."
-              ],
-              skills: ["Flutter", "Location Services", "Social Features", "Authentication", "iOS & Android"]
-            },
-            {
-              year: "2025",
-              company: "PropTelli",
-              companyFull: "Casakey Real Estate / PropTelli",
-              location: "Business Bay, Dubai, UAE",
-              role: "Flutter Developer",
-              date: "04/2025 - 12/2025",
-              type: "Corporate Role",
-              bullets: [
-                "Integrated Firebase Authentication, FCM push notifications, and Crashlytics for enhanced application reliability.",
-                "Implemented Navigator 2.0 for seamless role-based navigation and improved user experience.",
-                "Optimized memory usage and UI performance, reducing frame drops and improving responsiveness.",
-                "Prepared and deployed production-ready builds for App Store and Google Play Console."
-              ],
-              skills: ["Flutter", "Firebase", "Navigator 2.0", "Performance Optimization", "App Store Deploys"]
-            },
-            {
-              year: "2025",
-              company: "Wicosoft",
-              companyFull: "Wicosoft Developer Network",
-              location: "Dubai, UAE",
-              role: "App Developer | UI/UX Designer",
-              date: "03/2025 - 05/2025",
-              type: "Freelance Project",
-              bullets: [
-                "Built 2 mobile applications using Flutter and modern UI/UX principles.",
-                "Designed user interfaces using Figma and Canva to improve engagement and usability.",
-                "Integrated REST APIs and managed application state using Provider."
-              ],
-              skills: ["Flutter", "Figma", "UI/UX Design", "Provider State Management"]
-            },
-            {
-              year: "2024",
-              company: "SLR Shoppee",
-              companyFull: "SLR Shoppee (Retail e-Commerce)",
-              location: "Kerala, India",
-              role: "Associate Engineer (Mobile App)",
-              date: "04/2024 - 04/2025",
-              type: "Full-Time Role",
-              bullets: [
-                "Integrated real-time order tracking and secure payment workflows.",
-                "Utilized Provider for efficient state management and application scalability.",
-                "Enhanced user experience through clean navigation and intuitive interface design."
-              ],
-              skills: ["Flutter", "State Management", "Payment Gateways", "REST APIs"]
-            },
-            {
-              year: "2023",
-              company: "Luminar",
-              companyFull: "Luminar Technohub",
-              location: "Cochin, India",
-              role: "Intern: App Developer",
-              date: "11/2023 - 04/2024",
-              type: "Internship",
-              bullets: [
-                "Built a real-time bus tracking application using Flutter and a Python backend.",
-                "Improved application responsiveness and achieved high user satisfaction ratings.",
-                "Implemented Provider-based state management for efficient data synchronization."
-              ],
-              skills: ["Flutter", "Python", "REST APIs", "Provider", "Map Integration"]
-            }
-          ];
+      (function () {
+        const roadmapData = [
+          {
+            year: "2025-26",
+            company: "MixA'lore",
+            companyFull: "MixA'lore Social platform",
+            location: "Kochi, India",
+            role: "Flutter Developer",
+            date: "02/2025 - 05/2026",
+            type: "Freelance Project",
+            bullets: [
+              "Developed a social networking and event discovery platform connecting users with communities and events.",
+              "Implemented secure authentication, user profile management, and subscription-based features.",
+              "Integrated location-based services to help users discover nearby events and connect.",
+              "Built and maintained a seamless cross-platform experience for Android and iOS using Flutter.",
+              "Focused on performance optimization, scalable architecture, and intuitive UI/UX design."
+            ],
+            skills: ["Flutter", "Location Services", "Social Features", "Authentication", "iOS & Android"]
+          },
+          {
+            year: "2025",
+            company: "PropTelli",
+            companyFull: "Casakey Real Estate / PropTelli",
+            location: "Business Bay, Dubai, UAE",
+            role: "Flutter Developer",
+            date: "04/2025 - 12/2025",
+            type: "Corporate Role",
+            bullets: [
+              "Integrated Firebase Authentication, FCM push notifications, and Crashlytics for enhanced application reliability.",
+              "Implemented Navigator 2.0 for seamless role-based navigation and improved user experience.",
+              "Optimized memory usage and UI performance, reducing frame drops and improving responsiveness.",
+              "Prepared and deployed production-ready builds for App Store and Google Play Console."
+            ],
+            skills: ["Flutter", "Firebase", "Navigator 2.0", "Performance Optimization", "App Store Deploys"]
+          },
+          {
+            year: "2025",
+            company: "Wicosoft",
+            companyFull: "Wicosoft Developer Network",
+            location: "Dubai, UAE",
+            role: "App Developer | UI/UX Designer",
+            date: "03/2025 - 05/2025",
+            type: "Freelance Project",
+            bullets: [
+              "Built 2 mobile applications using Flutter and modern UI/UX principles.",
+              "Designed user interfaces using Figma and Canva to improve engagement and usability.",
+              "Integrated REST APIs and managed application state using Provider."
+            ],
+            skills: ["Flutter", "Figma", "UI/UX Design", "Provider State Management"]
+          },
+          {
+            year: "2024",
+            company: "SLR Shoppee",
+            companyFull: "SLR Shoppee (Retail e-Commerce)",
+            location: "Kerala, India",
+            role: "Associate Engineer (Mobile App)",
+            date: "04/2024 - 04/2025",
+            type: "Full-Time Role",
+            bullets: [
+              "Integrated real-time order tracking and secure payment workflows.",
+              "Utilized Provider for efficient state management and application scalability.",
+              "Enhanced user experience through clean navigation and intuitive interface design."
+            ],
+            skills: ["Flutter", "State Management", "Payment Gateways", "REST APIs"]
+          },
+          {
+            year: "2023",
+            company: "Luminar",
+            companyFull: "Luminar Technohub",
+            location: "Cochin, India",
+            role: "Intern: App Developer",
+            date: "11/2023 - 04/2024",
+            type: "Internship",
+            bullets: [
+              "Built a real-time bus tracking application using Flutter and a Python backend.",
+              "Improved application responsiveness and achieved high user satisfaction ratings.",
+              "Implemented Provider-based state management for efficient data synchronization."
+            ],
+            skills: ["Flutter", "Python", "REST APIs", "Provider", "Map Integration"]
+          }
+        ];
 
-          let activeIndex = 0;
-          const totalStops = roadmapData.length;
-          let autoplayTimer = null;
-          let isHovering = false;
+        let activeIndex = 0;
+        const totalStops = roadmapData.length;
+        let autoplayTimer = null;
+        let isHovering = false;
 
-          function startAutoplay() {
-            stopAutoplay();
-            autoplayTimer = setInterval(() => {
-              const nextIndex = (activeIndex + 1) % totalStops;
-              updateRoadmap(nextIndex);
-            }, 3000); // transitions every 3 seconds
+        function startAutoplay() {
+          stopAutoplay();
+          autoplayTimer = setInterval(() => {
+            const nextIndex = (activeIndex + 1) % totalStops;
+            updateRoadmap(nextIndex);
+          }, 3000); // transitions every 3 seconds
+        }
+
+        function stopAutoplay() {
+          if (autoplayTimer) {
+            clearInterval(autoplayTimer);
+            autoplayTimer = null;
+          }
+        }
+
+        // Elements
+        const stations = document.querySelectorAll('.station-node');
+        const progressLine = document.getElementById('roadmap-progress-line');
+        const consoleBody = document.getElementById('roadmap-console-body');
+
+        const consoleStopBadge = document.getElementById('console-stop-badge');
+        const consoleTypeBadge = document.getElementById('console-type-badge');
+        const consoleTitle = document.getElementById('console-title');
+        const consoleCompany = document.getElementById('console-company');
+        const consoleLocation = document.getElementById('console-location');
+        const consoleDate = document.getElementById('console-date');
+        const consoleBullets = document.getElementById('console-bullets');
+        const consoleSkills = document.getElementById('console-skills');
+
+        const prevBtn = document.getElementById('roadmap-prev-btn');
+        const nextBtn = document.getElementById('roadmap-next-btn');
+        const scrollContainer = document.getElementById('roadmap-scroll-container');
+
+        function scrambleText(element, newText, duration = 300) {
+          const chars = '01[]_-+*/&%$#@!?{}<>';
+          const start = performance.now();
+
+          if (element.dataset.animationId) {
+            cancelAnimationFrame(parseInt(element.dataset.animationId, 10));
           }
 
-          function stopAutoplay() {
-            if (autoplayTimer) {
-              clearInterval(autoplayTimer);
-              autoplayTimer = null;
-            }
-          }
+          function update(time) {
+            const elapsed = time - start;
+            const progress = Math.min(elapsed / duration, 1);
 
-          // Elements
-          const stations = document.querySelectorAll('.station-node');
-          const progressLine = document.getElementById('roadmap-progress-line');
-          const consoleBody = document.getElementById('roadmap-console-body');
+            const resolvedCount = Math.floor(newText.length * progress);
 
-          const consoleStopBadge = document.getElementById('console-stop-badge');
-          const consoleTypeBadge = document.getElementById('console-type-badge');
-          const consoleTitle = document.getElementById('console-title');
-          const consoleCompany = document.getElementById('console-company');
-          const consoleLocation = document.getElementById('console-location');
-          const consoleDate = document.getElementById('console-date');
-          const consoleBullets = document.getElementById('console-bullets');
-          const consoleSkills = document.getElementById('console-skills');
-
-          const prevBtn = document.getElementById('roadmap-prev-btn');
-          const nextBtn = document.getElementById('roadmap-next-btn');
-          const scrollContainer = document.getElementById('roadmap-scroll-container');
-
-          function scrambleText(element, newText, duration = 300) {
-            const chars = '01[]_-+*/&%$#@!?{}<>';
-            const start = performance.now();
-            
-            if (element.dataset.animationId) {
-              cancelAnimationFrame(parseInt(element.dataset.animationId, 10));
-            }
-
-            function update(time) {
-              const elapsed = time - start;
-              const progress = Math.min(elapsed / duration, 1);
-              
-              const resolvedCount = Math.floor(newText.length * progress);
-              
-              let currentText = '';
-              for (let i = 0; i < newText.length; i++) {
-                if (i < resolvedCount) {
-                  currentText += newText[i];
-                } else {
-                  currentText += chars[Math.floor(Math.random() * chars.length)];
-                }
-              }
-              
-              element.textContent = currentText;
-              
-              if (progress < 1) {
-                element.dataset.animationId = requestAnimationFrame(update);
+            let currentText = '';
+            for (let i = 0; i < newText.length; i++) {
+              if (i < resolvedCount) {
+                currentText += newText[i];
               } else {
-                delete element.dataset.animationId;
+                currentText += chars[Math.floor(Math.random() * chars.length)];
               }
             }
-            
-            element.dataset.animationId = requestAnimationFrame(update);
+
+            element.textContent = currentText;
+
+            if (progress < 1) {
+              element.dataset.animationId = requestAnimationFrame(update);
+            } else {
+              delete element.dataset.animationId;
+            }
           }
 
-          function updateRoadmap(index, resetAutoplay = false) {
-            activeIndex = index;
+          element.dataset.animationId = requestAnimationFrame(update);
+        }
 
-            if (resetAutoplay) {
-              stopAutoplay();
-              if (!isHovering) {
-                startAutoplay();
-              }
+        function updateRoadmap(index, resetAutoplay = false) {
+          activeIndex = index;
+
+          if (resetAutoplay) {
+            stopAutoplay();
+            if (!isHovering) {
+              startAutoplay();
             }
+          }
 
-            // Update Progress Line width
-            // Math: starts at 5%, goes to 95%. Step is 22.5% (total 4 segments)
-            const progressPct = 5 + (activeIndex * 22.5);
-            progressLine.style.width = progressPct + '%';
+          // Update Progress Line width
+          // Math: starts at 5%, goes to 95%. Step is 22.5% (total 4 segments)
+          const progressPct = 5 + (activeIndex * 22.5);
+          progressLine.style.width = progressPct + '%';
 
-            // Update Nodes active styling
-            stations.forEach((station, idx) => {
-              const outerRing = station.querySelector('.station-outer-ring');
-              const innerDot = station.querySelector('.station-inner-dot');
-              const yearLabel = station.querySelector('span:first-child');
-              const companyLabel = station.querySelector('span:last-child');
+          // Update Nodes active styling
+          stations.forEach((station, idx) => {
+            const outerRing = station.querySelector('.station-outer-ring');
+            const innerDot = station.querySelector('.station-inner-dot');
+            const yearLabel = station.querySelector('span:first-child');
+            const companyLabel = station.querySelector('span:last-child');
 
-              // Reset
-              outerRing.className = "w-7 h-7 rounded-full bg-[#0d0d0d] border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 station-outer-ring relative";
-              innerDot.className = "w-2.5 h-2.5 rounded-full transition-all duration-300 station-inner-dot";
-              yearLabel.className = "text-[10px] font-mono mb-3 transition-colors duration-300 font-bold";
-              companyLabel.className = "text-xs font-bold font-heading mt-3 text-center truncate w-24 transition-colors duration-300";
+            // Reset
+            outerRing.className = "w-7 h-7 rounded-full bg-[#0d0d0d] border-2 flex items-center justify-center transition-all duration-300 group-hover:scale-110 station-outer-ring relative";
+            innerDot.className = "w-2.5 h-2.5 rounded-full transition-all duration-300 station-inner-dot";
+            yearLabel.className = "text-[10px] font-mono mb-3 transition-colors duration-300 font-bold";
+            companyLabel.className = "text-xs font-bold font-heading mt-3 text-center truncate w-24 transition-colors duration-300";
 
-              outerRing.classList.add('border-white/20');
-              innerDot.classList.add('bg-white/20');
-              yearLabel.classList.add('text-white/40');
-              companyLabel.classList.add('text-white/50');
+            outerRing.classList.add('border-white/20');
+            innerDot.classList.add('bg-white/20');
+            yearLabel.classList.add('text-white/40');
+            companyLabel.classList.add('text-white/50');
 
-              // Apply Active styles
-              if (idx === activeIndex) {
-                outerRing.classList.remove('border-white/20');
-                outerRing.classList.add('border-accent', 'bg-accent/10', 'active-pulse');
-                innerDot.classList.remove('bg-white/20');
-                innerDot.classList.add('bg-accent', 'scale-125');
-                yearLabel.classList.remove('text-white/40');
-                yearLabel.classList.add('text-accent');
-                companyLabel.classList.remove('text-white/50');
-                companyLabel.classList.add('text-white');
-              } else if (idx < activeIndex) {
-                // Completed nodes
-                outerRing.classList.add('border-accent/60');
-                innerDot.classList.add('bg-accent/80');
-              }
-            });
-
-            // Transition Console display
-            consoleBody.classList.add('opacity-0', 'translate-y-2');
-
-            // Trigger console body flicker/glitch Settling
-            consoleBody.classList.remove('animate-flicker');
-            void consoleBody.offsetWidth; // Reflow
-            consoleBody.classList.add('animate-flicker');
-
-            // Ticker status logs
-            const statusLog = document.getElementById('console-status-log');
-            if (statusLog) {
-              const logs = [
-                `SYS_SYNC // INIT_STOP_0${activeIndex + 1}`,
-                "DECRYPTING // DATA_PACKETS...",
-                "MATRIX // INJECTING_SKILLS...",
-                "SYS_STATUS // LINK_SECURE"
-              ];
-              
-              // Clear previous timers
-              if (statusLog.dataset.logTimer1) clearTimeout(parseInt(statusLog.dataset.logTimer1, 10));
-              if (statusLog.dataset.logTimer2) clearTimeout(parseInt(statusLog.dataset.logTimer2, 10));
-              if (statusLog.dataset.logTimer3) clearTimeout(parseInt(statusLog.dataset.logTimer3, 10));
-
-              // Cycle logs
-              statusLog.textContent = logs[0];
-              
-              statusLog.dataset.logTimer1 = setTimeout(() => {
-                statusLog.textContent = logs[1];
-              }, 100);
-
-              statusLog.dataset.logTimer2 = setTimeout(() => {
-                statusLog.textContent = logs[2];
-              }, 200);
-
-              statusLog.dataset.logTimer3 = setTimeout(() => {
-                statusLog.textContent = logs[3];
-              }, 350);
+            // Apply Active styles
+            if (idx === activeIndex) {
+              outerRing.classList.remove('border-white/20');
+              outerRing.classList.add('border-accent', 'bg-accent/10', 'active-pulse');
+              innerDot.classList.remove('bg-white/20');
+              innerDot.classList.add('bg-accent', 'scale-125');
+              yearLabel.classList.remove('text-white/40');
+              yearLabel.classList.add('text-accent');
+              companyLabel.classList.remove('text-white/50');
+              companyLabel.classList.add('text-white');
+            } else if (idx < activeIndex) {
+              // Completed nodes
+              outerRing.classList.add('border-accent/60');
+              innerDot.classList.add('bg-accent/80');
             }
+          });
 
-            // Trigger scanner sweep
-            const scanner = document.getElementById('console-scanner');
-            if (scanner) {
-              scanner.classList.remove('scanner-active');
-              void scanner.offsetWidth; // Trigger reflow to restart animation
-              scanner.classList.add('scanner-active');
-            }
+          // Transition Console display
+          consoleBody.classList.add('opacity-0', 'translate-y-2');
 
-            setTimeout(() => {
-              const currentData = roadmapData[activeIndex];
+          // Trigger console body flicker/glitch Settling
+          consoleBody.classList.remove('animate-flicker');
+          void consoleBody.offsetWidth; // Reflow
+          consoleBody.classList.add('animate-flicker');
 
-              // Text values with scramble effect
-              consoleStopBadge.textContent = `STOP 0${activeIndex + 1} OF 0${totalStops}`;
-              consoleTypeBadge.textContent = currentData.type;
-              scrambleText(consoleTitle, currentData.role, 350);
-              scrambleText(consoleCompany, currentData.companyFull, 400);
-              scrambleText(consoleLocation, currentData.location, 300);
-              scrambleText(consoleDate, currentData.date, 300);
+          // Ticker status logs
+          const statusLog = document.getElementById('console-status-log');
+          if (statusLog) {
+            const logs = [
+              `SYS_SYNC // INIT_STOP_0${activeIndex + 1}`,
+              "DECRYPTING // DATA_PACKETS...",
+              "MATRIX // INJECTING_SKILLS...",
+              "SYS_STATUS // LINK_SECURE"
+            ];
 
-              // Theme badges - all stops are now work experiences (red accent)
-              consoleStopBadge.className = "px-2.5 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono uppercase tracking-wider rounded font-semibold";
-              consoleCompany.className = "text-accent text-lg font-medium";
+            // Clear previous timers
+            if (statusLog.dataset.logTimer1) clearTimeout(parseInt(statusLog.dataset.logTimer1, 10));
+            if (statusLog.dataset.logTimer2) clearTimeout(parseInt(statusLog.dataset.logTimer2, 10));
+            if (statusLog.dataset.logTimer3) clearTimeout(parseInt(statusLog.dataset.logTimer3, 10));
 
-              // Bullet list (with staggered slide-in)
-              consoleBullets.innerHTML = currentData.bullets.map((bullet, index) => `
+            // Cycle logs
+            statusLog.textContent = logs[0];
+
+            statusLog.dataset.logTimer1 = setTimeout(() => {
+              statusLog.textContent = logs[1];
+            }, 100);
+
+            statusLog.dataset.logTimer2 = setTimeout(() => {
+              statusLog.textContent = logs[2];
+            }, 200);
+
+            statusLog.dataset.logTimer3 = setTimeout(() => {
+              statusLog.textContent = logs[3];
+            }, 350);
+          }
+
+          // Trigger scanner sweep
+          const scanner = document.getElementById('console-scanner');
+          if (scanner) {
+            scanner.classList.remove('scanner-active');
+            void scanner.offsetWidth; // Trigger reflow to restart animation
+            scanner.classList.add('scanner-active');
+          }
+
+          setTimeout(() => {
+            const currentData = roadmapData[activeIndex];
+
+            // Text values with scramble effect
+            consoleStopBadge.textContent = `STOP 0${activeIndex + 1} OF 0${totalStops}`;
+            consoleTypeBadge.textContent = currentData.type;
+            scrambleText(consoleTitle, currentData.role, 350);
+            scrambleText(consoleCompany, currentData.companyFull, 400);
+            scrambleText(consoleLocation, currentData.location, 300);
+            scrambleText(consoleDate, currentData.date, 300);
+
+            // Theme badges - all stops are now work experiences (red accent)
+            consoleStopBadge.className = "px-2.5 py-1 bg-accent/10 border border-accent/20 text-accent text-[10px] font-mono uppercase tracking-wider rounded font-semibold";
+            consoleCompany.className = "text-accent text-lg font-medium";
+
+            // Bullet list (with staggered slide-in)
+            consoleBullets.innerHTML = currentData.bullets.map((bullet, index) => `
               <li class="flex items-start gap-3 animate-bullet" style="animation-delay: ${index * 75}ms;">
                 <span class="text-accent mt-1.5 flex-shrink-0">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-3.5 w-3.5 text-accent" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -1808,94 +2166,94 @@
               </li>
             `).join('');
 
-              // Skills tags (with staggered pop-in)
-              consoleSkills.innerHTML = currentData.skills.map((skill, index) => `
+            // Skills tags (with staggered pop-in)
+            consoleSkills.innerHTML = currentData.skills.map((skill, index) => `
               <span class="bg-white/[0.03] text-white/80 border border-white/5 hover:border-white/15 px-3 py-1 rounded-md text-xs font-mono font-medium transition-all animate-skill-tag" style="animation-delay: ${(currentData.bullets.length * 75) + (index * 50)}ms;">${skill}</span>
             `).join('');
 
-              // Fade back in
-              consoleBody.classList.remove('opacity-0', 'translate-y-2');
-            }, 200);
+            // Fade back in
+            consoleBody.classList.remove('opacity-0', 'translate-y-2');
+          }, 200);
 
-            // Scroll selected node into focus horizontally
-            const activeNode = stations[activeIndex];
-            if (activeNode && scrollContainer) {
-              const containerWidth = scrollContainer.offsetWidth;
-              const nodeOffsetLeft = activeNode.offsetLeft;
-              const nodeWidth = activeNode.offsetWidth;
-              scrollContainer.scrollTo({
-                left: nodeOffsetLeft - (containerWidth / 2) + (nodeWidth / 2),
-                behavior: 'smooth'
-              });
-            }
-
-            // Disable arrow buttons at boundaries
-            prevBtn.disabled = activeIndex === 0;
-            prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
-            nextBtn.disabled = activeIndex === totalStops - 1;
-            nextBtn.style.opacity = activeIndex === totalStops - 1 ? '0.3' : '1';
+          // Scroll selected node into focus horizontally
+          const activeNode = stations[activeIndex];
+          if (activeNode && scrollContainer) {
+            const containerWidth = scrollContainer.offsetWidth;
+            const nodeOffsetLeft = activeNode.offsetLeft;
+            const nodeWidth = activeNode.offsetWidth;
+            scrollContainer.scrollTo({
+              left: nodeOffsetLeft - (containerWidth / 2) + (nodeWidth / 2),
+              behavior: 'smooth'
+            });
           }
 
-          // Click handlers on Stations
-          stations.forEach((station, idx) => {
-            station.addEventListener('click', () => {
-              updateRoadmap(idx, true);
+          // Disable arrow buttons at boundaries
+          prevBtn.disabled = activeIndex === 0;
+          prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
+          nextBtn.disabled = activeIndex === totalStops - 1;
+          nextBtn.style.opacity = activeIndex === totalStops - 1 ? '0.3' : '1';
+        }
+
+        // Click handlers on Stations
+        stations.forEach((station, idx) => {
+          station.addEventListener('click', () => {
+            updateRoadmap(idx, true);
+          });
+        });
+
+        // Navigation button handlers
+        prevBtn.addEventListener('click', () => {
+          if (activeIndex > 0) {
+            updateRoadmap(activeIndex - 1, true);
+          }
+        });
+
+        nextBtn.addEventListener('click', () => {
+          if (activeIndex < totalStops - 1) {
+            updateRoadmap(activeIndex + 1, true);
+          }
+        });
+
+        // Initialize first stop on load & start autoplay
+        updateRoadmap(0);
+        startAutoplay();
+
+        // Mouse hover check on timeline track & details console to pause autoplay
+        const hoverPauseElements = [scrollContainer, consoleBody];
+        hoverPauseElements.forEach(el => {
+          if (el) {
+            el.addEventListener('mouseenter', () => {
+              isHovering = true;
+              stopAutoplay();
             });
-          });
+            el.addEventListener('mouseleave', () => {
+              isHovering = false;
+              startAutoplay();
+            });
+          }
+        });
 
-          // Navigation button handlers
-          prevBtn.addEventListener('click', () => {
-            if (activeIndex > 0) {
-              updateRoadmap(activeIndex - 1, true);
-            }
-          });
+        // Reticle cursor hover support
+        setTimeout(() => {
+          const hoverElements = document.querySelectorAll('.station-node, #roadmap-prev-btn, #roadmap-next-btn');
+          const cursor = document.getElementById('custom-cursor');
+          const follower = document.getElementById('cursor-follower');
 
-          nextBtn.addEventListener('click', () => {
-            if (activeIndex < totalStops - 1) {
-              updateRoadmap(activeIndex + 1, true);
-            }
-          });
-
-          // Initialize first stop on load & start autoplay
-          updateRoadmap(0);
-          startAutoplay();
-
-          // Mouse hover check on timeline track & details console to pause autoplay
-          const hoverPauseElements = [scrollContainer, consoleBody];
-          hoverPauseElements.forEach(el => {
-            if (el) {
+          if (cursor && follower) {
+            hoverElements.forEach(el => {
               el.addEventListener('mouseenter', () => {
-                isHovering = true;
-                stopAutoplay();
+                cursor.classList.add('hovered');
+                follower.classList.add('hovered');
               });
               el.addEventListener('mouseleave', () => {
-                isHovering = false;
-                startAutoplay();
+                cursor.classList.remove('hovered');
+                follower.classList.remove('hovered');
               });
-            }
-          });
+            });
+          }
+        }, 1000);
 
-          // Reticle cursor hover support
-          setTimeout(() => {
-            const hoverElements = document.querySelectorAll('.station-node, #roadmap-prev-btn, #roadmap-next-btn');
-            const cursor = document.getElementById('custom-cursor');
-            const follower = document.getElementById('cursor-follower');
-
-            if (cursor && follower) {
-              hoverElements.forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                  cursor.classList.add('hovered');
-                  follower.classList.add('hovered');
-                });
-                el.addEventListener('mouseleave', () => {
-                  cursor.classList.remove('hovered');
-                  follower.classList.remove('hovered');
-                });
-              });
-            }
-          }, 1000);
-
-        })();
+      })();
     </script>
   </section>
 
